@@ -16,7 +16,7 @@ const port = 3000,
     if (routeMap[req.url]) {
       res.end(routeMap[req.url]);
     } else {
-      setTimeout(() => res.end("<h1>Welcome</h1>"), 5000);
+      res.end("<h1>Welcome</h1>");
     }
   });
 
