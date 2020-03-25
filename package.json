@@ -10,14 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/glennludszuweit/MEN-restaurant.git"
   },
-  "keywords": [
-    "recipe",
-    "food",
-    "cooking",
-    "tips",
-    "cooking",
-    "blog"
-  ],
   "author": "Glenn Ludszuweit",
   "license": "ISC",
   "bugs": {
@@ -25,6 +17,7 @@
   },
   "homepage": "https://github.com/glennludszuweit/MEN-restaurant#readme",
   "dependencies": {
-    "cities": "^2.0.0"
+    "cities": "^2.0.0",
+    "http-status-codes": "^1.4.0"
   }
 }
