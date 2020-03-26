@@ -1,3 +1,6 @@
-const cities = require("cities");
-var myCity = cities.zip_lookup("10016");
-console.log(myCity);
+const port = 3000,
+  http = require("http"),
+  httpStatus = require("http-status-codes"),
+  router = require("./router"),
+  contentTypes = require("./contentTypes"),
+  utils = require("./utils");
