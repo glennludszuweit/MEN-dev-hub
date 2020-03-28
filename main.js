@@ -2,6 +2,8 @@ const express = require("express");
 const httpStatus = require("http-status-codes");
 const layouts = require("express-ejs-layouts");
 
+const homeController = require("./controllers/homeController");
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -15,11 +17,13 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(express.static("public"));
 
 //ROUTE REGISTER
-app.get("/", (req, res) => {
-  res.render("index");
-});
+app.get("/", homeController.indexPage);
+app.get("/", homeController.showCourses);
+app.get("/", homeController.showSignUp);
+app.post("/", homeController.postedSignUpForm);
 
 //SERVER
 app.listen(port, () => {
