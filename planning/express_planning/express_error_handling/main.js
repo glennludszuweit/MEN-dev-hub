@@ -11,14 +11,15 @@ app.set("view engine", "ejs");
 
 //MIDDLEWARES
 app.use(layouts);
-app.use(errorController.resourceNotFound);
-app.use(errorController.internalError);
 
 //ROUTES
 app.get("/name/:myName", homeController.resWithName);
 
-//SERVER
+//ERROR HANDLING
+app.use(errorController.resourceNotFound);
+app.use(errorController.internalError);
 
+//SERVER
 app.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 });
