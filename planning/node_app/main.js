@@ -1,4 +1,4 @@
-const port = 3000;
+const port = 5000;
 const http = require("http");
 const httpStatus = require("http-status-codes");
 const router = require("./router");
