@@ -11,6 +11,7 @@ app.set("view engine", "ejs");
 
 //MIDDLEWARES
 app.use(layouts);
+app.use(express.static("public"));
 
 //ROUTES
 app.get("/name/:myName", homeController.resWithName);

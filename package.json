@@ -1,0 +1,29 @@
+{
+  "name": "kitchen_hub",
+  "version": "1.0.0",
+  "description": "Cooking Course App",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glennludszuweit/MEN-restaurant.git"
+  },
+  "author": "Glenn Ludszuweit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glennludszuweit/MEN-restaurant/issues"
+  },
+  "homepage": "https://github.com/glennludszuweit/MEN-restaurant#readme",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "http-status-codes": "^1.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
