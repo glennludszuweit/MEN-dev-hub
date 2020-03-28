@@ -3,6 +3,7 @@ const httpStatus = require("http-status-codes");
 const layouts = require("express-ejs-layouts");
 
 const homeController = require("./controllers/homeController");
+const errorController = require("./controllers/errorController");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -24,6 +25,10 @@ app.get("/", homeController.indexPage);
 app.get("/courses", homeController.showCourses);
 app.get("/contact", homeController.showSignUp);
 app.post("/contact", homeController.postedSignUpForm);
+
+//ERROR HANDLING
+app.use(errorController.pageNotFound);
+app.use(errorController.internalServerError);
 
 //SERVER
 app.listen(port, () => {
