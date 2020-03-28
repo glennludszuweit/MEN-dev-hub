@@ -21,9 +21,9 @@ app.use(express.static("public"));
 
 //ROUTE REGISTER
 app.get("/", homeController.indexPage);
-app.get("/", homeController.showCourses);
-app.get("/", homeController.showSignUp);
-app.post("/", homeController.postedSignUpForm);
+app.get("/courses", homeController.showCourses);
+app.get("/contact", homeController.showSignUp);
+app.post("/contact", homeController.postedSignUpForm);
 
 //SERVER
 app.listen(port, () => {
