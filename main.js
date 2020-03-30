@@ -10,6 +10,22 @@ const port = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
 
+//DATABASE
+const mongoDB = require("mongodb").MongoClient;
+const dbURL = "mongodb://localhost:27017";
+const dbName = "kitchenhub";
+
+mongoDB.connect(dbURL, (error, client) => {
+  if (error) throw error;
+  let db = client.db(dbName);
+  db.collection("contacts")
+    .find()
+    .toArray((error, data) => {
+      if (error) throw error;
+      console.log(data);
+    });
+});
+
 //MIDDLEWARE
 app.use(layouts);
 app.use(
