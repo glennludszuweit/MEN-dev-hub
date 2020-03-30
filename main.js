@@ -11,13 +11,6 @@ const port = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
 
-//DATABASE
-mongoose.connect("mongodb://localhost:27017", { useNewUrlParser: true });
-const db = mongoose.connection;
-db.once("open", () => {
-  console.log("MongoDB connection made!");
-});
-
 //MIDDLEWARE
 app.use(layouts);
 app.use(
@@ -27,6 +20,43 @@ app.use(
 );
 app.use(express.json());
 app.use(express.static("public"));
+
+//DATABASE
+mongoose.connect("mongodb://localhost:27017", { useNewUrlParser: true });
+const db = mongoose.connection;
+db.once("open", () => {
+  console.log("MongoDB connection made!");
+});
+
+//SCHEMA
+const subsSchema = mongoose.Schema({
+  name: String,
+  email: String,
+  zipCode: Number
+});
+
+const Subscriber = mongoose.model("Subscriber", subsSchema);
+
+var subs1 = new Subscriber({
+  name: "Tony Patterdale",
+  email: "t.patterdale@gmail.com"
+});
+
+subs1.save((error, savedDocument) => {
+  if (error) console.log(error);
+  console.log(savedDocument);
+});
+
+Subscriber.create(
+  {
+    name: "Tony Patterdale",
+    email: "t.patterdale@gmail.com"
+  },
+  function(error, savedDocument) {
+    if (error) console.log(error);
+    console.log(savedDocument);
+  }
+);
 
 //ROUTE REGISTER
 app.get("/", homeController.indexPage);
