@@ -1,0 +1,11 @@
+<div class="container">
+  <% subscribers.forEach(s => { %>
+  <div class="subscriber">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <b>Name: </b> <%= s.name %> | <b>Email: </b> <%= s.email %>
+      </li>
+    </ul>
+  </div>
+  <% }); %>
+</div>
