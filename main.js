@@ -10,9 +10,16 @@ const subscribersController = require("./controllers/subscribersController");
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.set("view engine", "ejs");
+/////DATABASE/////
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost:27017", { useNewUrlParser: true });
+const db = mongoose.connection;
+db.once("open", () => {
+  console.log("MongoDB connection made!");
+});
 
 /////MIDDLEWARE/////
+app.set("view engine", "ejs");
 app.use(layouts);
 app.use(
   express.urlencoded({
@@ -22,19 +29,11 @@ app.use(
 app.use(express.json());
 app.use(express.static("public"));
 
-/////DATABASE/////
-mongoose.connect("mongodb://localhost:27017", { useNewUrlParser: true });
-const db = mongoose.connection;
-db.once("open", () => {
-  console.log("MongoDB connection made!");
-});
-
 /////ROUTE REGISTER/////
 //homeController
 app.get("/", homeController.indexPage);
 app.get("/courses", homeController.showCourses);
-// app.get("/contact", homeController.showSignUp);
-// app.post("/contact", homeController.postedSignUpForm);
+
 //subscribersController
 app.get("/contact", subscribersController.getSubscriptionPage);
 app.post("/subscribe", subscribersController.saveSubscriber);
@@ -46,6 +45,7 @@ app.get(
     res.render("subscribers", { subscribers: req.data });
   }
 );
+
 //errorController
 app.use(errorController.pageNotFound);
 app.use(errorController.internalServerError);

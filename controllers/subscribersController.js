@@ -1,11 +1,20 @@
 const Subscriber = require("../models/subscriber");
 
-exports.getAllSubscribers = (req, res, next) => {
-  Subscriber.find({}, (error, subscribers) => {
-    if (error) next(error);
-    req.data = subscribers;
-    next();
-  });
+exports.getAllSubscribers = (req, res) => {
+  Subscriber.find({})
+    .exec()
+    .then(subscribers => {
+      res.render("subscribers", {
+        subscribers: subscribers
+      });
+    })
+    .catch(error => {
+      console.log(error.message);
+      return [];
+    })
+    .then(() => {
+      console.log("Promise completed!");
+    });
 };
 
 exports.getSubscriptionPage = (req, res) => {
@@ -19,8 +28,12 @@ exports.saveSubscriber = (req, res) => {
     telNumber: req.body.telNumber
   });
 
-  newSubscriber.save((error, result) => {
-    if (error) res.send(error);
-    res.render("thanks");
-  });
+  newSubscriber
+    .save()
+    .then(result => {
+      res.render("thanks");
+    })
+    .catch(error => {
+      if (error) res.send(error);
+    });
 };
