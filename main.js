@@ -12,7 +12,9 @@ const port = process.env.PORT || 3000;
 
 /////DATABASE/////
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/kitchenhub", {
+  useNewUrlParser: true
+});
 const db = mongoose.connection;
 db.once("open", () => {
   console.log("MongoDB connection made!");
