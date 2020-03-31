@@ -33,9 +33,11 @@ db.once("open", () => {
 //homeController
 app.get("/", homeController.indexPage);
 app.get("/courses", homeController.showCourses);
-app.get("/contact", homeController.showSignUp);
-app.post("/contact", homeController.postedSignUpForm);
-//subscriberController
+// app.get("/contact", homeController.showSignUp);
+// app.post("/contact", homeController.postedSignUpForm);
+//subscribersController
+app.get("/contact", subscribersController.getSubscriptionPage);
+app.post("/subscribe", subscribersController.saveSubscriber);
 app.get(
   "/subscribers",
   subscribersController.getAllSubscribers,

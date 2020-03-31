@@ -1,11 +1,20 @@
 <div class="container">
-  <% subscribers.forEach(s => { %>
-  <div class="subscriber">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <b>Name: </b> <%= s.name %> | <b>Email: </b> <%= s.email %>
-      </li>
-    </ul>
-  </div>
-  <% }); %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone/Mobile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% subscribers.forEach(s => { %>
+      <tr>
+        <td><%= s.name %></td>
+        <td><%= s.email %></td>
+        <td><%= s.telNumber %></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
 </div>

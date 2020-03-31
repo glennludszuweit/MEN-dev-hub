@@ -7,3 +7,20 @@ exports.getAllSubscribers = (req, res, next) => {
     next();
   });
 };
+
+exports.getSubscriptionPage = (req, res) => {
+  res.render("contact");
+};
+
+exports.saveSubscriber = (req, res) => {
+  let newSubscriber = new Subscriber({
+    name: req.body.name,
+    email: req.body.email,
+    telNumber: req.body.telNumber
+  });
+
+  newSubscriber.save((error, result) => {
+    if (error) res.send(error);
+    res.render("thanks");
+  });
+};
