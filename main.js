@@ -38,15 +38,8 @@ app.get("/courses", homeController.showCourses);
 
 //subscribersController
 app.get("/contact", subscribersController.getSubscriptionPage);
+app.get("/subscribers", subscribersController.getAllSubscribers);
 app.post("/subscribe", subscribersController.saveSubscriber);
-app.get(
-  "/subscribers",
-  subscribersController.getAllSubscribers,
-  (req, res, next) => {
-    console.log(req.data);
-    res.render("subscribers", { subscribers: req.data });
-  }
-);
 
 //errorController
 app.use(errorController.pageNotFound);
