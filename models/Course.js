@@ -1,17 +1,17 @@
 const mongoose = require("mongoose");
-var mongooseTypePhone = require("mongoose-type-phone");
+const mongooseTypePhone = require("mongoose-type-phone");
 
-const subscriberSchema = mongoose.Schema({
-  name: {
+const courseSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  description: {
     type: String,
     required: true
   },
-  email: {
-    type: String,
-    required: true,
-    lowercase: true,
-    unique: true
-  },
+  items: [],
   telNumber: {
     type: mongoose.SchemaTypes.Phone,
     required: "Phone number should be set correctly",
@@ -23,17 +23,6 @@ const subscriberSchema = mongoose.Schema({
     // phoneNumberFormat: mongooseTypePhone.PhoneNumberFormat.INTERNATIONAL, // can be omitted to keep raw input
     defaultRegion: "DE",
     parseOnGet: false
-  }
+  },
+  address: String
 });
-
-subscriberSchema.methods.getInfo = function() {
-  return `Name: ${this.name} Email: ${this.email} Tel Number: ${this.telNumber}`;
-};
-
-subscriberSchema.methods.findLocalSubscribers = function() {
-  return this.model("Subscriber")
-    .find({ name: this.name })
-    .exec();
-};
-
-module.exports = mongoose.model("Subscriber", subscriberSchema);
