@@ -24,7 +24,7 @@
     "express-ejs-layouts": "^2.5.0",
     "express-messages": "^1.0.1",
     "express-session": "^1.17.0",
-    "express-validator": "^6.4.0",
+    "express-validator": "^4",
     "http-status-codes": "^1.4.0",
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.6",

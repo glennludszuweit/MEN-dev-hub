@@ -2,6 +2,9 @@ const express = require("express");
 const httpStatus = require("http-status-codes");
 const layouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
+const session = require("express-session");
+const flash = require("connect-flash");
+const expressValidator = require("express-validator");
 
 const homeController = require("./controllers/homeController");
 const errorController = require("./controllers/errorController");
@@ -30,6 +33,36 @@ app.use(
 );
 app.use(express.json());
 app.use(express.static("public"));
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+  })
+);
+app.use(require("connect-flash")());
+app.use(function(req, res, next) {
+  res.locals.messages = require("express-messages")(req, res);
+  next();
+});
+app.use(
+  expressValidator({
+    errorFormatter: function(param, msg, value) {
+      var namespace = param.split(".");
+      var root = namespace.shift();
+      var formParam = root;
+      while (namespace.length) {
+        formParam += "[" + namespace.shift() + "]";
+      }
+      return {
+        param: formParam,
+        msg: msg,
+        value: value
+      };
+    }
+  })
+);
 
 /////ROUTE REGISTER/////
 //homeController
