@@ -3,7 +3,6 @@ const httpStatus = require("http-status-codes");
 const layouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 const session = require("express-session");
-const flash = require("connect-flash");
 const expressValidator = require("express-validator");
 
 const homeController = require("./controllers/homeController");
@@ -36,9 +35,8 @@ app.use(express.static("public"));
 app.use(
   session({
     secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
+    resave: true,
+    saveUninitialized: true
   })
 );
 app.use(require("connect-flash")());

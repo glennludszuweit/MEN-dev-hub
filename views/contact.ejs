@@ -21,11 +21,12 @@
           placeholder="Email"
           required
         />
+        <%- messages("validation-message", locals) %>
         <input
           class="w-100 mt-2 mb-2 p-2"
           type="text"
           name="telNumber"
-          placeholder="Phone Number"
+          placeholder="Mobile"
         />
         <button class="button btn mt-2 mb-2" type="submit">Submit</button>
       </form>

@@ -1,4 +1,5 @@
 const Subscriber = require("../models/Subscriber");
+const flash = require("connect-flash");
 
 exports.getAllSubscribers = (req, res) => {
   Subscriber.find({})
@@ -34,6 +35,12 @@ exports.saveSubscriber = (req, res) => {
       res.render("thanks");
     })
     .catch(error => {
-      if (error) res.send(error);
+      if (error) {
+        req.flash(
+          "alert alert-danger",
+          "Please add registered mobile number or leave blank."
+        );
+        res.redirect("back");
+      }
     });
 };
