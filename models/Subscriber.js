@@ -23,7 +23,13 @@ const subscriberSchema = mongoose.Schema({
     // phoneNumberFormat: mongooseTypePhone.PhoneNumberFormat.INTERNATIONAL, // can be omitted to keep raw input
     defaultRegion: "DE",
     parseOnGet: false
-  }
+  },
+  courses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course"
+    }
+  ]
 });
 
 subscriberSchema.methods.getInfo = function() {
