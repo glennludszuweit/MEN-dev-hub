@@ -1,9 +1,8 @@
 const express = require("express");
-const httpStatus = require("http-status-codes");
-const layouts = require("express-ejs-layouts");
+// const layouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 const session = require("express-session");
-const expressValidator = require("express-validator");
+const path = require("path");
 
 const homeController = require("./controllers/homeController");
 const errorController = require("./controllers/errorController");
@@ -24,14 +23,14 @@ db.once("open", () => {
 
 /////MIDDLEWARE/////
 app.set("view engine", "ejs");
-app.use(layouts);
+// app.use(layouts);
 app.use(
   express.urlencoded({
     extended: false
   })
 );
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
     secret: "keyboard cat",
@@ -44,23 +43,6 @@ app.use(function(req, res, next) {
   res.locals.messages = require("express-messages")(req, res);
   next();
 });
-app.use(
-  expressValidator({
-    errorFormatter: function(param, msg, value) {
-      var namespace = param.split(".");
-      var root = namespace.shift();
-      var formParam = root;
-      while (namespace.length) {
-        formParam += "[" + namespace.shift() + "]";
-      }
-      return {
-        param: formParam,
-        msg: msg,
-        value: value
-      };
-    }
-  })
-);
 
 /////ROUTE REGISTER/////
 //homeController

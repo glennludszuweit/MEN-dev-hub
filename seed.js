@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Subscriber = require("./models/subscriber");
+const Subscriber = require("./models/Subscriber");
 
 mongoose.connect("mongodb://localhost:27017/kitchenhub", {
   useNewUrlParser: true

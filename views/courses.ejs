@@ -1,18 +1,42 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6">
-      <img src="images/cheeseburger.jpg" alt="" />
-    </div>
-    <div class="col-sm-6">
-      <h1 class="title pb-5">Learn to cook cutting edge food</h1>
-      <h3>Our Courses:</h3>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=0.8, maximum-scale=1"
+    />
+    <title>Kitchen Hub</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/kitchen_hub.css" />
+  </head>
 
-      <% offeredCourses.forEach(course => { %>
-      <h5><%= course.title %></h5>
-      <p>$<%= course.cost %></p>
-      <% }); %>
-
-      <a href="/contact">Contact Us</a> today!
+  <body>
+    <div id="nav">
+      <div class="col-sm nav-align"><h1 id="title">Kitchen Hub</h1></div>
+      <div class="col-sm nav-align">
+        <a href="/"> <span class="button">Home</span> </a>
+        <a href="/courses"> <span class="button">Courses</span> </a>
+        <a href="/contact"> <span class="button">Contact</span> </a>
+      </div>
     </div>
-  </div>
-</div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <img src="images/cheeseburger.jpg" alt="" />
+        </div>
+        <div class="col-sm-6">
+          <h1 class="title pb-5">Learn to cook cutting edge food</h1>
+          <h3>Our Courses:</h3>
+
+          <% offeredCourses.forEach(course => { %>
+          <h5><%= course.title %></h5>
+          <p>$<%= course.cost %></p>
+          <% }); %>
+
+          <a href="/contact">Contact Us</a> today!
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
