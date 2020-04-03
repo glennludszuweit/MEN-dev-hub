@@ -26,3 +26,5 @@ const courseSchema = new mongoose.Schema({
   },
   address: String
 });
+
+module.exports = mongoose.model("Course", courseSchema);
