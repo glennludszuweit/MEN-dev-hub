@@ -1,7 +1,3 @@
-exports.indexPage = (req, res) => {
-  res.render("index");
-};
-
 var courses = [
   {
     title: "Event Driven Cakes.",
@@ -16,8 +12,15 @@ var courses = [
     cost: 50
   }
 ];
-exports.showCourses = (req, res) => {
-  res.render("courses", {
-    offeredCourses: courses
-  });
+
+module.exports = {
+  indexPage: (req, res) => {
+    res.render("index");
+  },
+
+  showCourses: (req, res) => {
+    res.render("courses", {
+      offeredCourses: courses
+    });
+  }
 };

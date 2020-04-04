@@ -1,5 +1,4 @@
 const express = require("express");
-// const layouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const path = require("path");
@@ -23,7 +22,6 @@ db.once("open", () => {
 
 /////MIDDLEWARE/////
 app.set("view engine", "ejs");
-// app.use(layouts);
 app.use(
   express.urlencoded({
     extended: false
