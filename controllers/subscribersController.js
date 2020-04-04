@@ -12,9 +12,6 @@ module.exports = {
       .catch(error => {
         console.log(error.message);
         return [];
-      })
-      .then(() => {
-        console.log("Promise completed!");
       });
   },
 
