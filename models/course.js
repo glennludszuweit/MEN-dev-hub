@@ -14,7 +14,7 @@ const courseSchema = new mongoose.Schema({
   items: [],
   telNumber: {
     type: mongoose.SchemaTypes.Phone,
-    required: "Phone number should be set correctly",
+    // required: "Phone number should be set correctly",
     allowBlank: false,
     allowedNumberTypes: [
       mongooseTypePhone.PhoneNumberType.MOBILE,
