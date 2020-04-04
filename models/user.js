@@ -46,7 +46,7 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Subscriber"
   },
-  timestamps: true
+  timestamps: { type: Date, default: Date.now }
 });
 
 userSchema.virtual("fullName").get(function() {

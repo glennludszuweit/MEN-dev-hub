@@ -6,6 +6,7 @@ const path = require("path");
 const homeController = require("./controllers/homeController");
 const errorController = require("./controllers/errorController");
 const subscribersController = require("./controllers/subscribersController");
+const usersController = require("./controllers/usersController");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -51,6 +52,9 @@ app.get("/courses", homeController.showCourses);
 app.get("/contact", subscribersController.getSubscriptionPage);
 app.get("/subscribers", subscribersController.getAllSubscribers);
 app.post("/subscribe", subscribersController.saveSubscriber);
+
+//usersController
+app.get("/users", usersController.index);
 
 //errorController
 app.use(errorController.pageNotFound);
