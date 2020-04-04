@@ -5,7 +5,7 @@
     <%- include("partials/_navigation") %>
 
     <div class="container">
-      <h1>Subscribers</h1>
+      <h1>Users</h1>
       <table class="table">
         <thead>
           <tr>
@@ -15,11 +15,11 @@
           </tr>
         </thead>
         <tbody>
-          <% subscribers.forEach(subscriber => { %>
+          <% users.forEach(user => { %>
           <tr>
-            <td><%= subscriber.name %></td>
-            <td><%= subscriber.email %></td>
-            <td><%= subscriber.telNumber %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.telNumber %></td>
           </tr>
           <% }); %>
         </tbody>
