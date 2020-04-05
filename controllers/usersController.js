@@ -15,5 +15,9 @@ module.exports = {
 
   indexView: (req, res) => {
     res.render("users/index");
+  },
+
+  new: (req, res) => {
+    res.render("users/new");
   }
 };

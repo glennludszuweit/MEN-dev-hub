@@ -55,6 +55,7 @@ app.post("/subscribe", subscribersController.saveSubscriber);
 
 //usersController
 app.get("/users", usersController.index, usersController.indexView);
+app.get("/users/create", usersController.new);
 
 //errorController
 app.use(errorController.pageNotFound);
