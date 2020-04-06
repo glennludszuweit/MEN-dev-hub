@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const mongooseTypePhone = require("mongoose-type-phone");
 const { Schema } = mongoose;
+const Subscriber = require("./subscriber");
 
 const userSchema = new Schema({
   name: {
@@ -51,6 +52,25 @@ const userSchema = new Schema({
 
 userSchema.virtual("fullName").get(function() {
   return `${this.name.firstName} ${this.name.lastName}`;
+});
+
+userSchema.pre("save", function(next) {
+  let user = this;
+  if (user.subscribedAccount === undefined) {
+    Subscriber.findOne({
+      email: user.email
+    })
+      .then(subscriber => {
+        user.subscribedAccount = subscriber;
+        next();
+      })
+      .catch(error => {
+        console.log(error.message);
+        next(error);
+      });
+  } else {
+    next();
+  }
 });
 
 module.exports = mongoose.model("User", userSchema);
