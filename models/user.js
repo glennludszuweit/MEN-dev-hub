@@ -17,12 +17,12 @@ const userSchema = new Schema({
     type: String,
     required: true,
     lowercase: true,
-    unique: true
+    unique: [true, "Email address already taken"]
   },
   telNumber: {
     type: mongoose.SchemaTypes.Phone,
     // required: "Phone number should be set correctly",
-    allowBlank: false,
+    allowBlank: true,
     allowedNumberTypes: [
       mongooseTypePhone.PhoneNumberType.MOBILE,
       mongooseTypePhone.PhoneNumberType.FIXED_LINE_OR_MOBILE

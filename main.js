@@ -9,6 +9,7 @@ const subscribersController = require("./controllers/subscribersController");
 const usersController = require("./controllers/usersController");
 
 const app = express();
+const router = express.Router();
 const port = process.env.PORT || 3000;
 
 /////DATABASE/////
@@ -42,6 +43,7 @@ app.use(function(req, res, next) {
   res.locals.messages = require("express-messages")(req, res);
   next();
 });
+app.use("/", router);
 
 /////ROUTE REGISTER/////
 //homeController
@@ -55,8 +57,12 @@ app.post("/subscribe", subscribersController.saveSubscriber);
 
 //usersController
 app.get("/users", usersController.index, usersController.indexView);
-app.get("/users/new", usersController.new);
-app.get("/users/create", usersController.create, usersController.redirectView);
+router.get("/users/new", usersController.new);
+router.post(
+  "/users/create",
+  usersController.create,
+  usersController.redirectView
+);
 
 //errorController
 app.use(errorController.pageNotFound);
