@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const session = require("express-session");
 const path = require("path");
 
 const homeController = require("./controllers/homeController");
@@ -31,18 +30,6 @@ app.use(
 );
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(
-  session({
-    secret: "keyboard cat",
-    resave: true,
-    saveUninitialized: true
-  })
-);
-app.use(require("connect-flash")());
-app.use(function(req, res, next) {
-  res.locals.messages = require("express-messages")(req, res);
-  next();
-});
 app.use("/", router);
 
 /////ROUTE REGISTER/////

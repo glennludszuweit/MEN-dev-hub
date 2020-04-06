@@ -38,13 +38,7 @@ module.exports = {
         next();
       })
       .catch(error => {
-        if ((req.body.email = error)) {
-          req.flash(
-            "alert alert-danger",
-            "Something wrong with the info entered"
-          );
-          res.redirect("/users/new");
-        }
+        console.log(error.message);
         next(error);
       });
   },

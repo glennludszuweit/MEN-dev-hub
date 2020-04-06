@@ -28,16 +28,12 @@ module.exports = {
 
     newSubscriber
       .save()
-      .then(result => {
+      .then(() => {
         res.render("thanks");
       })
       .catch(error => {
         if (error) {
-          req.flash(
-            "alert alert-danger",
-            "Please add registered mobile number or leave blank."
-          );
-          res.redirect("/contact");
+          res.send(error);
         }
       });
   }

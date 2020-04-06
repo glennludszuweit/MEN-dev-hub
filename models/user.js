@@ -17,7 +17,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     lowercase: true,
-    unique: [true, "Email address already taken"]
+    unique: true
   },
   telNumber: {
     type: mongoose.SchemaTypes.Phone,
