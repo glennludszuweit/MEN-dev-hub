@@ -43,12 +43,6 @@ module.exports = {
       });
   },
 
-  redirectView: (req, res, next) => {
-    let redirectPath = res.locals.redirect;
-    if (redirectPath) res.redirect(redirectPath);
-    else next();
-  },
-
   show: (req, res, next) => {
     let userId = req.params.id;
     User.findById(userId)
@@ -64,5 +58,25 @@ module.exports = {
 
   showView: (req, res) => {
     res.render("users/show");
+  },
+
+  edit: (req, res, next) => {
+    let userId = req.params.id;
+    User.findById(userId)
+      .then((user) => {
+        res.render("users/edit", {
+          user: user,
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        next(error);
+      });
+  },
+
+  redirectView: (req, res, next) => {
+    let redirectPath = res.locals.redirect;
+    if (redirectPath) res.redirect(redirectPath);
+    else next();
   },
 };

@@ -56,6 +56,7 @@ router.post(
   usersController.redirectView
 );
 router.get("/users/:id", usersController.show, usersController.showView);
+router.get("users/:id/edit", usersController.edit);
 
 //errorController
 app.use(errorController.pageNotFound);
