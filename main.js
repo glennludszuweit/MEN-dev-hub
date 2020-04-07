@@ -29,13 +29,14 @@ app.use(
     extended: false,
   })
 );
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
+app.use("/", router);
 router.use(
   methodOverride("_method", {
     methods: ["POST", "GET"],
   })
 );
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
 
 /////ROUTE REGISTER/////
 //homeController
@@ -56,7 +57,7 @@ router.post(
   usersController.redirectView
 );
 router.get("/users/:id", usersController.show, usersController.showView);
-router.get("users/:id/edit", usersController.edit);
+router.get("/users/:id/edit", usersController.edit);
 router.put(
   "/users/:id/update",
   usersController.update,
@@ -66,9 +67,6 @@ router.put(
 //errorController
 app.use(errorController.pageNotFound);
 app.use(errorController.internalServerError);
-
-/////Express Router/////
-app.use("/", router);
 
 /////SERVER/////
 app.listen(port, () => {
