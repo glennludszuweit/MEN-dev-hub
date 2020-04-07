@@ -7,18 +7,18 @@ const userSchema = new Schema({
   name: {
     firstName: {
       type: String,
-      trim: true
+      trim: true,
     },
     lastName: {
       type: String,
-      trim: true
-    }
+      trim: true,
+    },
   },
   email: {
     type: String,
     required: true,
     lowercase: true,
-    unique: true
+    unique: true,
   },
   telNumber: {
     type: mongoose.SchemaTypes.Phone,
@@ -26,45 +26,45 @@ const userSchema = new Schema({
     allowBlank: true,
     allowedNumberTypes: [
       mongooseTypePhone.PhoneNumberType.MOBILE,
-      mongooseTypePhone.PhoneNumberType.FIXED_LINE_OR_MOBILE
+      mongooseTypePhone.PhoneNumberType.FIXED_LINE_OR_MOBILE,
     ],
     // phoneNumberFormat: mongooseTypePhone.PhoneNumberFormat.INTERNATIONAL, // can be omitted to keep raw input
     defaultRegion: "DE",
-    parseOnGet: false
+    parseOnGet: false,
   },
   password: {
     type: String,
     min: [6, "6 characters minimum."],
-    required: true
+    required: true,
   },
   courses: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Course"
-    }
+      ref: "Course",
+    },
   ],
   subscribedAccount: {
     type: Schema.Types.ObjectId,
-    ref: "Subscriber"
+    ref: "Subscriber",
   },
-  timestamps: { type: Date, default: Date.now }
+  timestamps: { type: Date, default: Date.now },
 });
 
-userSchema.virtual("fullName").get(function() {
+userSchema.virtual("fullName").get(function () {
   return `${this.name.firstName} ${this.name.lastName}`;
 });
 
-userSchema.pre("save", function(next) {
+userSchema.pre("save", function (next) {
   let user = this;
   if (user.subscribedAccount === undefined) {
     Subscriber.findOne({
-      email: user.email
+      email: user.email,
     })
-      .then(subscriber => {
+      .then((subscriber) => {
         user.subscribedAccount = subscriber;
         next();
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error.message);
         next(error);
       });
