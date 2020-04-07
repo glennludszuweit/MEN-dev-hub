@@ -29,13 +29,13 @@ app.use(
     extended: false,
   })
 );
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
 router.use(
   methodOverride("_method", {
     methods: ["POST", "GET"],
   })
 );
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
 
 /////ROUTE REGISTER/////
 //homeController
@@ -57,6 +57,11 @@ router.post(
 );
 router.get("/users/:id", usersController.show, usersController.showView);
 router.get("users/:id/edit", usersController.edit);
+router.put(
+  "/users/:id/update",
+  usersController.update,
+  usersController.redirectView
+);
 
 //errorController
 app.use(errorController.pageNotFound);

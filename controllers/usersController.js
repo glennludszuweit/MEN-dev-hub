@@ -74,6 +74,31 @@ module.exports = {
       });
   },
 
+  update: (req, res, next) => {
+    let userId = req.params.id;
+    let userParams = {
+      name: {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+      },
+      email: req.body.email,
+      telNumber: req.body.telNumber,
+      password: req.body.password,
+    };
+    User.findByIdAndUpdate(userId, {
+      $set: userParams,
+    })
+      .then((user) => {
+        res.locals.redirect = `/users/${userId}`;
+        res.locals.user = user;
+        next();
+      })
+      .catch((error) => {
+        console.log(error.message);
+        next(error);
+      });
+  },
+
   redirectView: (req, res, next) => {
     let redirectPath = res.locals.redirect;
     if (redirectPath) res.redirect(redirectPath);
