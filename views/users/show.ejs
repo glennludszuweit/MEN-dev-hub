@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <%- include("../partials/_head") %>
+  <body>
+    <%- include("../partials/_navigation") %>
+
+    <div class="container">
+      <h1>Users</h1>
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <td><%= user.fullName %></td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td><%= user.email %></td>
+        </tr>
+        <tr>
+          <th>Mobile</th>
+          <td><%= user.telNumber %></td>
+        </tr>
+        <tr>
+          <th>Password</th>
+          <td><%= user.password %></td>
+        </tr>
+      </table>
+      <% if(user.subscribedAccount) { %>
+      <h4 class="center">
+        <a href="<%= `/subscribers/${user.subscribedAccount} %> ">
+          User Subscribed</a
+        >
+      </h4>
+      <% } %>
+    </div>
+  </body>
+</html>

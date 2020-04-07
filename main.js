@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;
 /////DATABASE/////
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:27017/kitchenhub", {
-  useNewUrlParser: true
+  useNewUrlParser: true,
 });
 const db = mongoose.connection;
 db.once("open", () => {
@@ -25,7 +25,7 @@ db.once("open", () => {
 app.set("view engine", "ejs");
 app.use(
   express.urlencoded({
-    extended: false
+    extended: false,
   })
 );
 app.use(express.json());
