@@ -10,10 +10,10 @@
           <img src="/images/graph.png" alt="" />
         </div>
         <div class="col-sm-6">
-          <h1>Create new User</h1>
+          <h1>Edit User</h1>
           <form
             class="contact-form"
-            action="<%= `/users/:id/update?_method=PUT` %> "
+            action="<%= `/users/${user._id}/update?_method=PUT` %> "
             method="POST"
           >
             <input
