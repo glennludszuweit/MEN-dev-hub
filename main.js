@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const methodOverride = require("method-override");
 
 const homeController = require("./controllers/homeController");
 const errorController = require("./controllers/errorController");
@@ -30,7 +31,11 @@ app.use(
 );
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/", router);
+router.use(
+  methodOverride("_method", {
+    methods: ["POST", "GET"],
+  })
+);
 
 /////ROUTE REGISTER/////
 //homeController
@@ -55,6 +60,9 @@ router.get("/users/:id", usersController.show, usersController.showView);
 //errorController
 app.use(errorController.pageNotFound);
 app.use(errorController.internalServerError);
+
+/////Express Router/////
+app.use("/", router);
 
 /////SERVER/////
 app.listen(port, () => {
