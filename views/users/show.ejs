@@ -5,10 +5,10 @@
     <%- include("../partials/_navigation") %>
 
     <div class="container">
-      <h1>Users</h1>
+      <h1><%= user.name.firstName %>'s Profile</h1>
       <table class="table">
         <tr>
-          <th>Name</th>
+          <th>Full Name</th>
           <td><%= user.fullName %></td>
         </tr>
         <tr>
@@ -26,9 +26,9 @@
       </table>
       <% if(user.subscribedAccount) { %>
       <h4 class="center">
-        <a href="<%= `/subscribers/${user.subscribedAccount} %> ">
-          User Subscribed</a
-        >
+        <a href="<%= `/subscribers/${user.subscribedAccount}` %>">
+          User Subscribed
+        </a>
       </h4>
       <% } %>
     </div>

@@ -3,11 +3,11 @@ const User = require("../models/user");
 module.exports = {
   index: (req, res, next) => {
     User.find()
-      .then(users => {
+      .then((users) => {
         res.locals.users = users;
         next();
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error.message);
         next(error);
       });
@@ -25,19 +25,19 @@ module.exports = {
     let userParams = {
       name: {
         firstName: req.body.firstName,
-        lastName: req.body.lastName
+        lastName: req.body.lastName,
       },
       email: req.body.email,
       telNumber: req.body.telNumber,
-      password: req.body.password
+      password: req.body.password,
     };
     User.create(userParams)
-      .then(user => {
+      .then((user) => {
         res.locals.redirect = "/users";
         res.locals.user = user;
         next();
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error.message);
         next(error);
       });
@@ -47,5 +47,22 @@ module.exports = {
     let redirectPath = res.locals.redirect;
     if (redirectPath) res.redirect(redirectPath);
     else next();
-  }
+  },
+
+  show: (req, res, next) => {
+    let userId = req.params.id;
+    User.findById(userId)
+      .then((user) => {
+        res.locals.user = user;
+        next();
+      })
+      .catch((error) => {
+        console.log(error.message);
+        next(error);
+      });
+  },
+
+  showView: (req, res) => {
+    res.render("users/show");
+  },
 };
