@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <%- include("../partials/_head") %>
+  <body>
+    <%- include("../partials/_navigation") %>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <img src="/images/graph.png" alt="" />
+        </div>
+        <div class="col-sm-6">
+          <h1>Create new User</h1>
+          <form class="contact-form" action="/users/create" method="POST">
+            <input
+              class="w-100 mt-2 mb-2 p-2"
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              required
+            />
+            <input
+              class="w-100 mt-2 mb-2 p-2"
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              required
+            />
+            <input
+              class="w-100 mt-2 mb-2 p-2"
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+            />
+            <input
+              class="w-100 mt-2 mb-2 p-2"
+              type="text"
+              name="telNumber"
+              placeholder="Mobile (optional)"
+            />
+            <input
+              class="w-100 mt-2 mb-2 p-2"
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+            <div>
+              <button class="button btn mt-2 mb-2" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
