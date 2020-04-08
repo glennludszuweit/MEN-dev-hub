@@ -1,45 +1,39 @@
-const mongoose = require("mongoose");
-const mongooseTypePhone = require("mongoose-type-phone");
+"use strict";
 
-const subscriberSchema = mongoose.Schema({
-  name: {
-    type: String,
-    required: true
+const mongoose = require("mongoose"),
+  { Schema } = mongoose;
+
+var subscriberSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      required: true,
+      lowercase: true,
+      unique: true
+    },
+    zipCode: {
+      type: Number,
+      min: [10000, "Zip code too short"],
+      max: 99999
+    },
+    courses: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Course"
+      }
+    ]
   },
-  email: {
-    type: String,
-    required: true,
-    lowercase: true,
-    unique: true
-  },
-  telNumber: {
-    type: mongoose.SchemaTypes.Phone,
-    // required: "Phone number should be set correctly",
-    allowBlank: true,
-    allowedNumberTypes: [
-      mongooseTypePhone.PhoneNumberType.MOBILE,
-      mongooseTypePhone.PhoneNumberType.FIXED_LINE_OR_MOBILE
-    ],
-    // phoneNumberFormat: mongooseTypePhone.PhoneNumberFormat.INTERNATIONAL, // can be omitted to keep raw input
-    defaultRegion: "DE",
-    parseOnGet: false
-  },
-  courses: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Course"
-    }
-  ]
-});
+  {
+    timestamps: true
+  }
+);
 
 subscriberSchema.methods.getInfo = function() {
-  return `Name: ${this.name} Email: ${this.email} Tel Number: ${this.telNumber}`;
-};
-
-subscriberSchema.methods.findLocalSubscribers = function() {
-  return this.model("Subscriber")
-    .find({ name: this.name })
-    .exec();
+  return `Name: ${this.name} Email: ${this.email} Zip Code: ${this.zipCode}`;
 };
 
 module.exports = mongoose.model("Subscriber", subscriberSchema);

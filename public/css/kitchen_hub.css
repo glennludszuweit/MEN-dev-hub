@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  padding-top: 150px;
+  padding-top: 130px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #625a56;
 }
@@ -53,9 +53,49 @@ a {
   cursor: pointer;
   display: inline-block;
   color: #fff;
+  margin-bottom: 2px;
 }
 
 .button:hover {
   background-color: #ffb99f;
   color: #ed4a0f;
+}
+
+.subscriber {
+  padding: 10px 0px;
+  border-bottom: 1px solid lightgray;
+}
+
+.subscriber p {
+  margin: 0;
+}
+
+.list-container {
+  padding: 0 20px;
+  border: 3px solid #ffb568;
+  border-radius: 1px;
+}
+
+.item-label {
+  font-weight: 600;
+  font-style: italic;
+  margin-right: 5px;
+}
+
+.subscription-form input {
+  display: block;
+  margin: 5px;
+}
+
+.data-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.data-form label {
+  margin: 5px 0 0 0;
+}
+
+.hidden-text {
+  -webkit-text-security: disc;
 }

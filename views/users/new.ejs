@@ -1,57 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <%- include("../partials/_head") %>
-  <body>
-    <%- include("../partials/_navigation") %>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6">
-          <img src="/images/graph.png" alt="" />
-        </div>
-        <div class="col-sm-6">
-          <h1>Create new User</h1>
-          <form class="contact-form" action="/users/create" method="POST">
-            <input
-              class="w-100 mt-2 mb-2 p-2"
-              type="text"
-              name="firstName"
-              placeholder="First Name"
-              required
-            />
-            <input
-              class="w-100 mt-2 mb-2 p-2"
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              required
-            />
-            <input
-              class="w-100 mt-2 mb-2 p-2"
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-            />
-            <input
-              class="w-100 mt-2 mb-2 p-2"
-              type="text"
-              name="telNumber"
-              placeholder="Mobile (optional)"
-            />
-            <input
-              class="w-100 mt-2 mb-2 p-2"
-              type="password"
-              name="password"
-              placeholder="Password"
-              required
-            />
-            <div>
-              <button class="button btn mt-2 mb-2" type="submit">Submit</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+<div class="data-form">
+  <form class="form-signin" action="/users/create" method="POST">
+    <h2 class="form-signin-heading">Create a new user:</h2>
+    <label for="inputFirstName">First Name</label>
+    <input type="text" name="first" id="inputFirstName" class="form-control" placeholder="First" autofocus>
+    <label for="inputLastName">Last Name</label>
+    <input type="text" name="last" id="inputLastName" class="form-control" placeholder="Last">
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <label for="inputEmail">Email address</label>
+    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+    <label for="inputZipCode">Zip Code</label>
+    <input type="text" name="zipCode" id="inputZipCode" pattern="[0-9]{5}" class="form-control" placeholder="Zip Code" required>
+    <br /><button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </form>
+</div>

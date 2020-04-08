@@ -1,9 +1,0 @@
-<div id="messages">
-  <% Object.keys(messages).forEach(function (type) { %>
-  <div class="<%= type %>">
-    <% messages[type].forEach(function (message) { %> <%= message %> <% }) %>
-  </div>
-  <% }) %>
-</div>
-
-<%- messages("partials/_validationMessage", locals) %>

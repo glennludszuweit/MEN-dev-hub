@@ -1,57 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <%- include("../partials/_head") %>
-  <body>
-    <%- include("../partials/_navigation") %>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6">
-          <img src="/images/graph.png" alt="" />
-        </div>
-        <div class="col-sm-6">
-          <h1>Create new User</h1>
-          <form class="contact-form" action="/users/create" method="POST">
-            <input
-              class="w-100 mt-2 mb-2 p-2"
-              type="text"
-              name="firstName"
-              placeholder="First Name"
-              required
-            />
-            <input
-              class="w-100 mt-2 mb-2 p-2"
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              required
-            />
-            <input
-              class="w-100 mt-2 mb-2 p-2"
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-            />
-            <input
-              class="w-100 mt-2 mb-2 p-2"
-              type="text"
-              name="telNumber"
-              placeholder="Mobile (optional)"
-            />
-            <input
-              class="w-100 mt-2 mb-2 p-2"
-              type="password"
-              name="password"
-              placeholder="Password"
-              required
-            />
-            <div>
-              <button class="button btn mt-2 mb-2" type="submit">Submit</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+<div class="data-form">
+  <form class="form-signin" action="<%=`/courses/create`%>" method="POST">
+    <h2 class="form-signin-heading">Create a new course:</h2>
+    <label for="inputTitle">Title</label>
+    <input type="text" name="title" id="inputTitle" class="form-control" placeholder="Title" autofocus>
+    <label for="inputDescription">Description</label>
+    <input type="text" name="description" id="inputDescription" class="form-control" placeholder="Description">
+    <label for="inputMaxStudents">Max Students</label>
+    <input type="text" name="maxStudents" id="inputMaxStudents" pattern="\d*" class="form-control" placeholder="Max Students" required>
+    <label for="inputCost">Cost</label>
+    <input type="text" name="cost" id="inputCost" pattern="\d*" class="form-control" placeholder="Cost" required>
+    <br /><button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+  </form>
+</div>
