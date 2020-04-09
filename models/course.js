@@ -1,5 +1,5 @@
-const mongoose = require("mongoose"),
-  { Schema } = require("mongoose");
+const mongoose = require("mongoose");
+const { Schema } = require("mongoose");
 
 var courseSchema = new Schema(
   {

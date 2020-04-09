@@ -1,14 +1,15 @@
 "use strict";
 
-const Subscriber = require("../models/subscriber"),
-  getSubscriberParams = (body) => {
-    return {
-      name: body.name,
-      email: body.email,
-      mobileNum: body.mobileNum,
-      zipCode: parseInt(body.zipCode),
-    };
+const Subscriber = require("../models/subscriber");
+
+const getSubscriberParams = (body) => {
+  return {
+    name: body.name,
+    email: body.email,
+    mobileNum: body.mobileNum,
+    zipCode: parseInt(body.zipCode),
   };
+};
 
 module.exports = {
   index: (req, res, next) => {

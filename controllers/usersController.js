@@ -1,18 +1,19 @@
 "use strict";
 
-const User = require("../models/user"),
-  getUserParams = (body) => {
-    return {
-      name: {
-        first: body.first,
-        last: body.last,
-      },
-      email: body.email,
-      mobileNum: body.mobileNum,
-      password: body.password,
-      zipCode: body.zipCode,
-    };
+const User = require("../models/user");
+
+const getUserParams = (body) => {
+  return {
+    name: {
+      first: body.first,
+      last: body.last,
+    },
+    email: body.email,
+    mobileNum: body.mobileNum,
+    password: body.password,
+    zipCode: body.zipCode,
   };
+};
 
 module.exports = {
   index: (req, res, next) => {

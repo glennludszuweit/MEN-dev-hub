@@ -1,15 +1,16 @@
 "use strict";
 
-const Course = require("../models/course"),
-  getCourseParams = (body) => {
-    return {
-      title: body.title,
-      description: body.description,
-      zipCode: body.zipCode,
-      maxStudents: body.maxStudents,
-      cost: body.cost,
-    };
+const Course = require("../models/course");
+
+const getCourseParams = (body) => {
+  return {
+    title: body.title,
+    description: body.description,
+    zipCode: body.zipCode,
+    maxStudents: body.maxStudents,
+    cost: body.cost,
   };
+};
 
 module.exports = {
   index: (req, res, next) => {

@@ -1,14 +1,21 @@
-const express = require("express"),
-  layouts = require("express-ejs-layouts"),
-  app = express(),
-  router = express.Router(),
-  homeController = require("./controllers/homeController"),
-  errorController = require("./controllers/errorController"),
-  subscribersController = require("./controllers/subscribersController.js"),
-  usersController = require("./controllers/usersController.js"),
-  coursesController = require("./controllers/coursesController.js"),
-  mongoose = require("mongoose"),
-  methodOverride = require("method-override");
+"use strict";
+
+const express = require("express");
+const layouts = require("express-ejs-layouts");
+const mongoose = require("mongoose");
+const methodOverride = require("method-override");
+const cookieParser = require("cookie-parser");
+const connectFlash = require("connect-flash");
+const expressSession = require("express-session");
+
+const homeController = require("./controllers/homeController");
+const errorController = require("./controllers/errorController");
+const subscribersController = require("./controllers/subscribersController.js");
+const usersController = require("./controllers/usersController.js");
+const coursesController = require("./controllers/coursesController.js");
+
+const app = express();
+const router = express.Router();
 
 //////////DATABASE
 mongoose.connect("mongodb://localhost:27017/kitchenhub", {
@@ -28,6 +35,20 @@ router.use(
     methods: ["POST", "GET"],
   })
 );
+
+//Flash Messages
+router.use(cookieParser("secret_passcode"));
+router.use(
+  expressSession({
+    secret: "secret_passcode",
+    cookie: {
+      maxAge: 4000000,
+      resave: false,
+      saveUninitialized: false,
+    },
+  })
+);
+router.use(connectFlash());
 
 //Static Layout
 router.use(layouts);

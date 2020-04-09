@@ -1,7 +1,7 @@
-const mongoose = require("mongoose"),
-  mongooseTypePhone = require("mongoose-type-phone"),
-  { Schema } = require("mongoose"),
-  Subscriber = require("./subscriber");
+const mongoose = require("mongoose");
+const mongooseTypePhone = require("mongoose-type-phone");
+const { Schema } = require("mongoose");
+const Subscriber = require("./subscriber");
 
 var userSchema = new mongoose.Schema(
   {
