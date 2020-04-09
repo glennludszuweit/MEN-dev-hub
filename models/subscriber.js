@@ -16,11 +16,11 @@ var subscriberSchema = new Schema(
     },
     mobileNum: {
       type: mongoose.SchemaTypes.Phone,
+      required: "Please Enter a valid number.",
       allowBlank: true,
       allowedNumberTypes: [
         mongooseTypePhone.PhoneNumberType.MOBILE,
         mongooseTypePhone.PhoneNumberType.FIXED_LINE_OR_MOBILE,
-        "Please Enter a valid number.",
       ],
       defaultRegion: "DE",
       parseOnGet: false,
