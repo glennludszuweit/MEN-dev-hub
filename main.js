@@ -1,5 +1,3 @@
-"use strict";
-
 const express = require("express"),
   layouts = require("express-ejs-layouts"),
   app = express(),
@@ -20,7 +18,7 @@ mongoose.set("useCreateIndex", true);
 
 //////////MIDDLEWARES
 //Project Environment
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 4000);
 app.set("view engine", "ejs");
 
 //Express Router

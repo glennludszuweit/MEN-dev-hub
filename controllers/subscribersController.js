@@ -1,22 +1,23 @@
 "use strict";
 
 const Subscriber = require("../models/subscriber"),
-  getSubscriberParams = body => {
+  getSubscriberParams = (body) => {
     return {
       name: body.name,
       email: body.email,
-      zipCode: parseInt(body.zipCode)
+      mobileNum: body.mobileNum,
+      zipCode: parseInt(body.zipCode),
     };
   };
 
 module.exports = {
   index: (req, res, next) => {
     Subscriber.find()
-      .then(subscribers => {
+      .then((subscribers) => {
         res.locals.subscribers = subscribers;
         next();
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(`Error fetching subscribers: ${error.message}`);
         next(error);
       });
@@ -32,12 +33,12 @@ module.exports = {
   create: (req, res, next) => {
     let subscriberParams = getSubscriberParams(req.body);
     Subscriber.create(subscriberParams)
-      .then(subscriber => {
+      .then((subscriber) => {
         res.locals.redirect = "/subscribers";
         res.locals.subscriber = subscriber;
         next();
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(`Error saving subscriber: ${error.message}`);
         next(error);
       });
@@ -51,11 +52,11 @@ module.exports = {
   show: (req, res, next) => {
     let subscriberId = req.params.id;
     Subscriber.findById(subscriberId)
-      .then(subscriber => {
+      .then((subscriber) => {
         res.locals.subscriber = subscriber;
         next();
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(`Error fetching subscriber by ID: ${error.message}`);
         next(error);
       });
@@ -68,12 +69,12 @@ module.exports = {
   edit: (req, res, next) => {
     let subscriberId = req.params.id;
     Subscriber.findById(subscriberId)
-      .then(subscriber => {
+      .then((subscriber) => {
         res.render("subscribers/edit", {
-          subscriber: subscriber
+          subscriber: subscriber,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(`Error fetching subscriber by ID: ${error.message}`);
         next(error);
       });
@@ -84,14 +85,14 @@ module.exports = {
       subscriberParams = getSubscriberParams(req.body);
 
     Subscriber.findByIdAndUpdate(subscriberId, {
-      $set: subscriberParams
+      $set: subscriberParams,
     })
-      .then(subscriber => {
+      .then((subscriber) => {
         res.locals.redirect = `/subscribers/${subscriberId}`;
         res.locals.subscriber = subscriber;
         next();
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(`Error updating subscriber by ID: ${error.message}`);
         next(error);
       });
@@ -104,9 +105,9 @@ module.exports = {
         res.locals.redirect = "/subscribers";
         next();
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(`Error deleting subscriber by ID: ${error.message}`);
         next();
       });
-  }
+  },
 };

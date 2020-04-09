@@ -1,6 +1,4 @@
-<h1 class="center">Subscriber Data for
-  <%= subscriber.name %>
-</h1>
+<h1 class="center">Subscriber Data for <%= subscriber.name %></h1>
 
 <table class="table">
   <tr>
@@ -16,6 +14,12 @@
     </td>
   </tr>
   <tr>
+    <th>Mobile</th>
+    <td>
+      <%= subscriber.mobileNum%>
+    </td>
+  </tr>
+  <tr>
     <th>Zip Code</th>
     <td>
       <%= subscriber.zipCode%>
@@ -23,9 +27,7 @@
   </tr>
 </table>
 
-<p>This subscriber has
-  <%= subscriber.courses.length %> associated course(s)
-</p>
+<p>This subscriber has <%= subscriber.courses.length %> associated course(s)</p>
 
 <div>
   <a class="button" href="<%=`/subscribers/${subscriber._id}/edit`%>">
@@ -33,7 +35,13 @@
   </a>
 </div>
 <div>
-  <a class="button" href="<%= `/subscribers/${subscriber._id}/delete?_method=DELETE` %>" onclick="return confirm('Are you sure you want to delete this record?')" a>Delete</a>
+  <a
+    class="button"
+    href="<%= `/subscribers/${subscriber._id}/delete?_method=DELETE` %>"
+    onclick="return confirm('Are you sure you want to delete this record?')"
+    a
+    >Delete</a
+  >
 </div>
 <div>
   <a class="button" href="/subscribers">View all subscribers</a>
