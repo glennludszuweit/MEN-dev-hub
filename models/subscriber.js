@@ -20,6 +20,7 @@ var subscriberSchema = new Schema(
       allowedNumberTypes: [
         mongooseTypePhone.PhoneNumberType.MOBILE,
         mongooseTypePhone.PhoneNumberType.FIXED_LINE_OR_MOBILE,
+        "Please Enter a valid number.",
       ],
       defaultRegion: "DE",
       parseOnGet: false,
