@@ -40,8 +40,8 @@ var userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    subscribedAccount: { type: Schema.Types.ObjectId, ref: "Subscriber" },
     courses: [{ type: Schema.Types.ObjectId, ref: "Course" }],
+    subscribedAccount: { type: Schema.Types.ObjectId, ref: "Subscriber" },
   },
   {
     timestamps: true,
@@ -54,7 +54,7 @@ userSchema.virtual("fullName").get(function () {
 
 userSchema.pre("save", function (next) {
   let user = this;
-  if (user.subscribedAccount === undefined) {
+  if (user.subscribedAccount == undefined) {
     Subscriber.findOne({
       email: user.email,
     })

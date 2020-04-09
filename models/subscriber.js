@@ -42,7 +42,7 @@ var subscriberSchema = new Schema(
 );
 
 subscriberSchema.methods.getInfo = function () {
-  return `Name: ${this.name} Email: ${this.email} Zip Code: ${this.zipCode} Mobile: ${this.mobileNum}`;
+  return `Name: ${this.name} Email: ${this.email} Mobile: ${this.mobileNum} Zip Code: ${this.zipCode}`;
 };
 
 module.exports = mongoose.model("Subscriber", subscriberSchema);
