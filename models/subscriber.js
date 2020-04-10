@@ -16,7 +16,6 @@ var subscriberSchema = new Schema(
     },
     mobileNum: {
       type: mongoose.SchemaTypes.Phone,
-      required: "Please Enter a valid number.",
       allowBlank: true,
       allowedNumberTypes: [
         mongooseTypePhone.PhoneNumberType.MOBILE,
