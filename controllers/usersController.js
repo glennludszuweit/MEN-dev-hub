@@ -31,6 +31,32 @@ module.exports = {
     res.render("users/index");
   },
 
+  login: (req, res) => {
+    res.render("users/login");
+  },
+
+  authenticate: (req, res, next) => {
+    User.findOne({
+      email: req.body.email,
+    })
+      .then((user) => {
+        if (user && user.password === req.body.password) {
+          res.locals.redirect = `/users/${user._id}`;
+          req.flash("success", `${user.fullName}'s login successful!`);
+          res.locals.user = user;
+          next();
+        } else {
+          req.flash("error", "Email or Password incorrect.");
+          res.locals.redirect = "/users/login";
+          next();
+        }
+      })
+      .catch((error) => {
+        console.log(`Error logging in: ${error.message}`);
+        next(error);
+      });
+  },
+
   new: (req, res) => {
     res.render("users/new");
   },
@@ -120,26 +146,5 @@ module.exports = {
         console.log(`Error deleting user by ID: ${error.message}`);
         next();
       });
-  },
-
-  login: (req, res) => {
-    res.render("users/login");
-  },
-
-  authenticate: (req, res, next) => {
-    User.findOne({
-      email: req.body.email,
-    }).then((user) => {
-      if (user && user.password === req.body.password) {
-        res.locals.redirect = `/users/${user._id}`;
-        req.flash("success", `${user.fullName}'s login successful!`);
-        res.locals.user = user;
-        next();
-      } else {
-        req.flash("error", "Email or Password incorrect.");
-        res.locals.redirect = "/login";
-        next();
-      }
-    });
   },
 };

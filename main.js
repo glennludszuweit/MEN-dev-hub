@@ -71,6 +71,12 @@ router.use(express.json());
 router.get("/", homeController.index);
 
 //Users Routes
+router.get("/users/login", usersController.login);
+router.post(
+  "/users/login",
+  usersController.authenticate,
+  usersController.redirectView
+);
 router.get("/users", usersController.index, usersController.indexView);
 router.get("/users/new", usersController.new);
 router.post(
@@ -88,12 +94,6 @@ router.get("/users/:id", usersController.show, usersController.showView);
 router.delete(
   "/users/:id/delete",
   usersController.delete,
-  usersController.redirectView
-);
-router.get("/login", usersController.login);
-router.post(
-  "/users/login",
-  usersController.authenticate,
   usersController.redirectView
 );
 
