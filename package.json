@@ -1,5 +1,5 @@
 {
-  "name": "kitchen_hub",
+  "name": "dev_hub",
   "version": "1.0.0",
   "description": "Learning Platform App",
   "main": "main.js",
@@ -7,16 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon main.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/glennludszuweit/MEN-restaurant.git"
-  },
   "author": "Glenn Ludszuweit",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/glennludszuweit/MEN-restaurant/issues"
-  },
-  "homepage": "https://github.com/glennludszuweit/MEN-restaurant#readme",
   "dependencies": {
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
