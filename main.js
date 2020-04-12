@@ -90,6 +90,12 @@ router.delete(
   usersController.delete,
   usersController.redirectView
 );
+router.get("/login", usersController.login);
+router.post(
+  "/users/login",
+  usersController.authenticate,
+  usersController.redirectView
+);
 
 //Subscribers Routes
 router.get(

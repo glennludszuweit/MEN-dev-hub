@@ -121,4 +121,25 @@ module.exports = {
         next();
       });
   },
+
+  login: (req, res) => {
+    res.render("users/login");
+  },
+
+  authenticate: (req, res, next) => {
+    User.findOne({
+      email: req.body.email,
+    }).then((user) => {
+      if (user && user.password === req.body.password) {
+        res.locals.redirect = `/users/${user._id}`;
+        req.flash("success", `${user.fullName}'s login successful!`);
+        res.locals.user = user;
+        next();
+      } else {
+        req.flash("error", "Email or Password incorrect.");
+        res.locals.redirect = "/login";
+        next();
+      }
+    });
+  },
 };
