@@ -46,7 +46,6 @@ module.exports = {
         next();
       })
       .catch((error) => {
-        console.log(`Error saving user: ${error.message}`);
         res.locals.redirect = "/users/new";
         req.flash("error", `Falied: ${error.message}`);
         next();
@@ -91,28 +90,30 @@ module.exports = {
   },
 
   update: (req, res, next) => {
-    let userId = req.params.id,
-      userParams = getUserParams(req.body);
+    let userId = req.params.id;
+    let userParams = getUserParams(req.body);
 
     User.findByIdAndUpdate(userId, {
       $set: userParams,
     })
       .then((user) => {
+        req.flash("success", `${user.fullName}'s account updated!`);
         res.locals.redirect = `/users/${userId}`;
         res.locals.user = user;
         next();
       })
       .catch((error) => {
-        console.log(`Error updating user by ID: ${error.message}`);
+        res.locals.redirect = `/users/${userId}/edit`;
+        req.flash("error", `Falied: ${error.message}`);
         next(error);
       });
   },
-
   delete: (req, res, next) => {
     let userId = req.params.id;
     User.findByIdAndRemove(userId)
       .then(() => {
         res.locals.redirect = "/users";
+        req.flash("success", `${user.fullName}'s account deleted!`);
         next();
       })
       .catch((error) => {

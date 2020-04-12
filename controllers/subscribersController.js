@@ -35,13 +35,18 @@ module.exports = {
     let subscriberParams = getSubscriberParams(req.body);
     Subscriber.create(subscriberParams)
       .then((subscriber) => {
+        req.flash(
+          "success",
+          `${subscriber.name}'s account created successfuly!`
+        );
         res.locals.redirect = "/subscribers";
         res.locals.subscriber = subscriber;
         next();
       })
       .catch((error) => {
-        console.log(`Error saving subscriber: ${error.message}`);
-        next(error);
+        res.locals.redirect = "/subscribers/new";
+        req.flash("error", `Falied: ${error.message}`);
+        next();
       });
   },
 
@@ -89,13 +94,15 @@ module.exports = {
       $set: subscriberParams,
     })
       .then((subscriber) => {
+        req.flash("success", `${subscriber.name}'s account updated!`);
         res.locals.redirect = `/subscribers/${subscriberId}`;
         res.locals.subscriber = subscriber;
         next();
       })
       .catch((error) => {
-        console.log(`Error updating subscriber by ID: ${error.message}`);
-        next(error);
+        req.flash("error", `Failed: ${error.message}`);
+        res.locals.redirect = `/subscribers/${subscriberId}/edit`;
+        next();
       });
   },
 
@@ -104,6 +111,7 @@ module.exports = {
     Subscriber.findByIdAndRemove(subscriberId)
       .then(() => {
         res.locals.redirect = "/subscribers";
+        req.flash("success", `${subscriber.fullName}'s account deleted!`);
         next();
       })
       .catch((error) => {

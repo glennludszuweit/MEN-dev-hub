@@ -36,13 +36,15 @@ module.exports = {
     let courseParams = getCourseParams(req.body);
     Course.create(courseParams)
       .then((course) => {
+        req.flash("success", `${course.title} added!`);
         res.locals.redirect = "/courses";
         res.locals.course = course;
         next();
       })
       .catch((error) => {
-        console.log(`Error saving course: ${error.message}`);
-        next(error);
+        res.locals.redirect = "/courses/new";
+        req.flash("error", `Falied: ${error.message}`);
+        next();
       });
   },
 
@@ -91,13 +93,15 @@ module.exports = {
       $set: courseParams,
     })
       .then((course) => {
+        req.flash("success", `${course.title} updated!`);
         res.locals.redirect = `/courses/${courseId}`;
         res.locals.course = course;
         next();
       })
       .catch((error) => {
-        console.log(`Error updating course by ID: ${error.message}`);
-        next(error);
+        res.locals.redirect = `/courses/${courseId}/edit`;
+        req.flash("error", `Falied: ${error.message}`);
+        next();
       });
   },
 
@@ -105,6 +109,7 @@ module.exports = {
     let courseId = req.params.id;
     Course.findByIdAndRemove(courseId)
       .then(() => {
+        req.flash("success", `${course.title} deleted!`);
         res.locals.redirect = "/courses";
         next();
       })
