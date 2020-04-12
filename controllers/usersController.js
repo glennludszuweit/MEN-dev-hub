@@ -30,7 +30,7 @@ module.exports = {
   indexView: (req, res) => {
     res.render("users/index");
   },
-
+  //////Users Login
   login: (req, res) => {
     res.render("users/login");
   },
@@ -56,7 +56,7 @@ module.exports = {
         next(error);
       });
   },
-
+  //////Create User
   new: (req, res) => {
     res.render("users/new");
   },
@@ -78,6 +78,7 @@ module.exports = {
       });
   },
 
+  //////User Lists
   redirectView: (req, res, next) => {
     let redirectPath = res.locals.redirect;
     if (redirectPath !== undefined) res.redirect(redirectPath);
@@ -101,6 +102,7 @@ module.exports = {
     res.render("users/show");
   },
 
+  //////Edit/Update User
   edit: (req, res, next) => {
     let userId = req.params.id;
     User.findById(userId)
@@ -134,6 +136,8 @@ module.exports = {
         next(error);
       });
   },
+
+  //////Delete User
   delete: (req, res, next) => {
     let userId = req.params.id;
     User.findByIdAndRemove(userId)

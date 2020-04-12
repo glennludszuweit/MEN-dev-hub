@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const mongooseTypePhone = require("mongoose-type-phone");
 const { Schema } = require("mongoose");
 const Subscriber = require("./subscriber");
+const bcrypt = require("bcrypt");
 
 var userSchema = new mongoose.Schema(
   {
