@@ -75,6 +75,8 @@ passport.deserializeUser(User.deserializeUser());
 router.use(connectFlash());
 router.use((req, res, next) => {
   res.locals.flashMessages = req.flash();
+  res.locals.loggedIn = req.isAuthenticated();
+  res.locals.currentUser = req.user;
   next();
 });
 
@@ -88,6 +90,11 @@ router.get("/", homeController.index);
 //Users Routes
 router.get("/users/login", usersController.login);
 router.post("/users/login", usersController.authenticate);
+router.get(
+  "/users/logout",
+  usersController.logout,
+  usersController.redirectView
+);
 router.get("/users", usersController.index, usersController.indexView);
 router.get("/users/new", usersController.new);
 router.post(
