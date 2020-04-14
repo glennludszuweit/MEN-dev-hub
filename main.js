@@ -6,12 +6,15 @@ const cookieParser = require("cookie-parser");
 const connectFlash = require("connect-flash");
 const expressSession = require("express-session");
 const expressValidator = require("express-validator");
+const passport = require("passport");
 
 const homeController = require("./controllers/homeController");
 const errorController = require("./controllers/errorController");
 const subscribersController = require("./controllers/subscribersController.js");
 const usersController = require("./controllers/usersController.js");
 const coursesController = require("./controllers/coursesController.js");
+
+const User = require("./models/user");
 
 const app = express();
 const router = express.Router();
@@ -64,6 +67,13 @@ router.use((req, res, next) => {
   res.locals.flashMessages = req.flash();
   next();
 });
+
+//Passport
+router.use(passport.initialize());
+router.use(passport.session());
+passport.use(user.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 //Express Validator
 router.use(expressValidator());
