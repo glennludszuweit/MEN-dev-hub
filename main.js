@@ -87,11 +87,7 @@ router.get("/", homeController.index);
 
 //Users Routes
 router.get("/users/login", usersController.login);
-router.post(
-  "/users/login",
-  usersController.authenticate,
-  usersController.redirectView
-);
+router.post("/users/login", usersController.authenticate);
 router.get("/users", usersController.index, usersController.indexView);
 router.get("/users/new", usersController.new);
 router.post(
