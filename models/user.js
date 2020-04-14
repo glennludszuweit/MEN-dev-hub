@@ -38,10 +38,10 @@ var userSchema = new mongoose.Schema(
       min: [1000, "Zip code too short"],
       max: 99999,
     },
-    password: {
-      type: String,
-      required: true,
-    },
+    // password: {
+    //   type: String,
+    //   required: true,
+    // },
     courses: [{ type: Schema.Types.ObjectId, ref: "Course" }],
     subscribedAccount: { type: Schema.Types.ObjectId, ref: "Subscriber" },
   },
@@ -87,10 +87,10 @@ userSchema.pre("save", function (next) {
     });
 });
 
-userSchema.methods.passwordComparison = function (inputPassword) {
-  let user = this;
-  return bcrypt.compare(inputPassword, user.password);
-};
+// userSchema.methods.passwordComparison = function (inputPassword) {
+//   let user = this;
+//   return bcrypt.compare(inputPassword, user.password);
+// };
 
 userSchema.plugin(passportLocalMongoose, {
   usernameField: "email",

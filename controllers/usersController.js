@@ -10,7 +10,7 @@ const getUserParams = (body) => {
     },
     email: body.email,
     mobileNum: body.mobileNum,
-    password: body.password,
+    // password: body.password,
     zipCode: body.zipCode,
   };
 };
