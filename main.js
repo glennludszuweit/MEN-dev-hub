@@ -1,5 +1,3 @@
-"use strict";
-
 const express = require("express");
 const layouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
@@ -29,6 +27,18 @@ mongoose.set("useCreateIndex", true);
 app.set("port", process.env.PORT || 4000);
 app.set("view engine", "ejs");
 
+//Static Layout
+router.use(layouts);
+router.use(express.static("public"));
+
+//Body Parser
+router.use(
+  express.urlencoded({
+    extended: false,
+  })
+);
+router.use(express.json());
+
 //Express Router
 app.use("/", router);
 router.use(
@@ -55,18 +65,6 @@ router.use((req, res, next) => {
   next();
 });
 
-//Static Layout
-router.use(layouts);
-router.use(express.static("public"));
-
-//Body Parser
-router.use(
-  express.urlencoded({
-    extended: false,
-  })
-);
-router.use(express.json());
-
 //Express Validator
 router.use(expressValidator());
 
@@ -85,6 +83,7 @@ router.get("/users", usersController.index, usersController.indexView);
 router.get("/users/new", usersController.new);
 router.post(
   "/users/create",
+  usersController.validate,
   usersController.create,
   usersController.redirectView
 );
