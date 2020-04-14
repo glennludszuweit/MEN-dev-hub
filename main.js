@@ -7,6 +7,7 @@ const methodOverride = require("method-override");
 const cookieParser = require("cookie-parser");
 const connectFlash = require("connect-flash");
 const expressSession = require("express-session");
+const expressValidator = require("express-validator");
 
 const homeController = require("./controllers/homeController");
 const errorController = require("./controllers/errorController");
@@ -65,6 +66,9 @@ router.use(
   })
 );
 router.use(express.json());
+
+//Express Validator
+router.use(expressValidator());
 
 //////////ROUTE REGISTERS
 //Home Routes
