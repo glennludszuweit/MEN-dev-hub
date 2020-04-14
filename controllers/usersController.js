@@ -10,7 +10,7 @@ const getUserParams = (body) => {
     },
     email: body.email,
     mobileNum: body.mobileNum,
-    // password: body.password,
+    password: body.password,
     zipCode: body.zipCode,
   };
 };
@@ -113,20 +113,19 @@ module.exports = {
   },
 
   create: (req, res, next) => {
-    let userParams = getUserParams(req.body);
-
-    User.create(userParams)
-      .then((user) => {
-        req.flash("success", `${user.fullName}'s account created successfuly!`);
+    if (req.skip) next();
+    let newUser = new User(getUserParams(req.body));
+    User.register(newUser, req.body.password, (error, user) => {
+      if (user) {
+        req.flash("success", `${user.fullName}'s account created!`);
         res.locals.redirect = "/users";
-        res.locals.user = user;
         next();
-      })
-      .catch((error) => {
+      } else {
+        req.flash("error", `Failed: ${error.message}`);
         res.locals.redirect = "/users/new";
-        req.flash("error", `Falied: ${error.message}`);
         next();
-      });
+      }
+    });
   },
 
   //////User Lists

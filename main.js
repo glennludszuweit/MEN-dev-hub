@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require("express");
 const layouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
