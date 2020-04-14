@@ -33,8 +33,8 @@ app.set("port", process.env.PORT || 4000);
 app.set("view engine", "ejs");
 
 //Static Layout
-router.use(layouts);
 router.use(express.static("public"));
+router.use(layouts);
 
 //Body Parser
 router.use(
@@ -64,11 +64,6 @@ router.use(
     },
   })
 );
-router.use(connectFlash());
-router.use((req, res, next) => {
-  res.locals.flashMessages = req.flash();
-  next();
-});
 
 //Passport
 router.use(passport.initialize());
@@ -76,6 +71,12 @@ router.use(passport.session());
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+router.use(connectFlash());
+router.use((req, res, next) => {
+  res.locals.flashMessages = req.flash();
+  next();
+});
 
 //Express Validator
 router.use(expressValidator());
