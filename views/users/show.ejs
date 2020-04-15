@@ -1,55 +1,56 @@
 <div class="row align-items-center mt-3">
-  <h1 class="center">User Data for <%= user.fullName %></h1>
+  <div class="container">
+    <h1 class="center">User Data for <%= user.fullName %></h1>
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <td>
+          <%= user.fullName %>
+        </td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>
+          <%= user.email%>
+        </td>
+      </tr>
+      <tr>
+        <th>Mobile</th>
+        <td>
+          <%= user.mobileNum%>
+        </td>
+      </tr>
+      <tr>
+        <th>Zip Code</th>
+        <td>
+          <%= user.zipCode%>
+        </td>
+      </tr>
+      <tr>
+        <th>Password</th>
+        <td>********</td>
+      </tr>
+    </table>
 
-  <table class="table">
-    <tr>
-      <th>Name</th>
-      <td>
-        <%= user.fullName %>
-      </td>
-    </tr>
-    <tr>
-      <th>Email</th>
-      <td>
-        <%= user.email%>
-      </td>
-    </tr>
-    <tr>
-      <th>Mobile</th>
-      <td>
-        <%= user.mobileNum%>
-      </td>
-    </tr>
-    <tr>
-      <th>Zip Code</th>
-      <td>
-        <%= user.zipCode%>
-      </td>
-    </tr>
-    <tr>
-      <th>Password</th>
-      <td>********</td>
-    </tr>
-  </table>
-
-  <% if(user.subscribedAccount != undefined) { %>
-  <h4 class="center">
-    This user has a
-    <a href="<%=`/subscribers/${user.subscribedAccount}`%>">
-      subscribed account</a
-    >.
-  </h4>
-  <% } %>
+    <% if(user.subscribedAccount != undefined) { %>
+    <h4 class="center">
+      This user has a
+      <a href="<%=`/subscribers/${user.subscribedAccount}`%>">
+        subscribed account</a
+      >.
+    </h4>
+    <% } %>
+  </div>
 </div>
-<div class="row mt-3 mb-5">
-  <div class="col-md-4">
+<div class="row mt-3 mb-3">
+  <div class="col-md-4 mb-3">
     <div>
       <a class="btn btn-warning w-100" href="<%=`/users/${user._id}/edit`%>">
         Edit User Details
       </a>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 mb-3">
     <div>
       <a
         class="btn btn-danger w-100"
@@ -60,7 +61,7 @@
       >
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 mb-3">
     <div>
       <a class="btn btn-success w-100" href="/users">View all users</a>
     </div>

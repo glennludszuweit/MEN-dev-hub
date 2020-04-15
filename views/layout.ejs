@@ -39,24 +39,24 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li>
-              <a class="nav-link ml-3" href="/">Home </a>
+              <a class="nav-link" href="/">Home </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link ml-3" href="/courses">Courses</a>
+              <a class="nav-link" href="/courses">Courses</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link ml-3" href="/subscribers/new">Contact</a>
+              <a class="nav-link" href="/subscribers/new">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link ml-3" href="/users">Users</a>
+              <a class="nav-link" href="/users">Users</a>
             </li>
             <% if (loggedIn) { %>
             <li class="nav-item">
-              <a class="btn btn-secondary ml-3" href="/users/logout">Logout</a>
+              <a class="btn btn-secondary" href="/users/logout">Logout</a>
             </li>
             <%} else {%>
             <li class="nav-item">
-              <a class="btn btn-secondary ml-3" href="/users/login">Login</a>
+              <a class="btn btn-secondary" href="/users/login">Login</a>
             </li>
             <% } %>
           </ul>
@@ -83,6 +83,7 @@
     </div>
 
     <!-- Footer -->
+    <br />
     <footer class="footer bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">
