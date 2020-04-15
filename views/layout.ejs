@@ -1,56 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=0.8, maximum-scale=1"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
     <title>DEV Hub</title>
-    <link rel="stylesheet" href="/css/bootstrap.css" />
-    <link rel="stylesheet" href="/css/kitchen_hub.css" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/small-business.css" />
   </head>
 
   <body>
-    <div id="nav">
-      <div class="col-sm nav-align">
-        <h1 id="title">DEV Hub</h1>
+    <!-- Navigation -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark d-flex align-self-start"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#">DEV Hub</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li>
+              <a class="nav-link ml-3" href="/">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ml-3" href="/courses">Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ml-3" href="/subscribers/new">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ml-3" href="/users">Users</a>
+            </li>
+            <% if (loggedIn) { %>
+            <li class="nav-item">
+              <a class="btn btn-secondary ml-3" href="/users/logout">Logout</a>
+            </li>
+            <%} else {%>
+            <li class="nav-item">
+              <a class="btn btn-secondary ml-3" href="/users/login">Login</a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
       </div>
-      <div class="col-sm nav-align">
-        <a href="/">
-          <span class="button">Home</span>
-        </a>
-        <a href="/courses">
-          <span class="button">Courses</span>
-        </a>
-        <a href="/subscribers/new">
-          <span class="button">Contact</span>
-        </a>
-        <a href="/users">
-          <span class="button">Users</span>
-        </a>
-        <% if (loggedIn) { %>
-        <a href="/users/logout"><span class="button">Logout</span></a>
-        <%} else {%>
-        <a href="/users/login"><span class="button">Login</span></a>
-        <% } %>
-      </div>
-    </div>
+    </nav>
 
-    <div class="flashes">
+    <!-- Flash Messages -->
+    <div class="alert">
       <% if (flashMessages) { %> <% if (flashMessages.success) { %>
-      <div class="flash success">
+      <div class="alert alert-success">
         <%= flashMessages.success %>
       </div>
       <% } else if (flashMessages.error) { %>
-      <div class="flash error">
+      <div class="alert alert-danger">
         <%= flashMessages.error %>
       </div>
       <% } %> <% } %>
     </div>
 
+    <!-- Page Content -->
     <div class="container">
       <%- body %>
     </div>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">
+          Copyright &copy; Your Website 2019
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

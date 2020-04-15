@@ -1,59 +1,64 @@
-<div class="data-form">
-  <form class="form-signin" action="/users/create" method="POST">
-    <h2 class="form-signin-heading">Create a new user:</h2>
-    <label for="inputFirstName">First Name</label>
-    <input
-      type="text"
-      name="first"
-      id="inputFirstName"
-      class="form-control"
-      placeholder="First"
-      autofocus
+<div class="row align-items-center mb-5 mt-3">
+  <div class="col-lg-7">
+    <img
+      class="img-fluid rounded mb-4 mb-lg-0"
+      src="/images/graph.png"
+      alt=""
     />
-    <label for="inputLastName">Last Name</label>
-    <input
-      type="text"
-      name="last"
-      id="inputLastName"
-      class="form-control"
-      placeholder="Last"
-    />
-    <label for="inputPassword">Password</label>
-    <input
-      type="password"
-      name="password"
-      id="inputPassword"
-      class="form-control"
-      placeholder="Password"
-    />
-    <label for="inputEmail">Email address</label>
-    <input
-      type="email"
-      name="email"
-      id="inputEmail"
-      class="form-control"
-      placeholder="Email address"
-    />
-    <label for="inputMobile">Mobile</label>
-    <input
-      type="text"
-      name="mobileNum"
-      id="inputMobile"
-      pattern="[0-9]{11}"
-      class="form-control"
-      placeholder="Mobile (optional)"
-    />
-    <label for="inputZipCode">Zip Code</label>
-    <input
-      type="text"
-      name="zipCode"
-      id="inputZipCode"
-      pattern="[0-9]{5}"
-      class="form-control"
-      placeholder="Zip Code"
-    />
-    <br /><button class="btn btn-lg btn-primary btn-block" type="submit">
-      Sign Up
-    </button>
-  </form>
+  </div>
+  <div class="col-lg-5">
+    <div class="data-form">
+      <form class="form-signin" action="/users/create" method="POST">
+        <h2 class="form-signin-heading">Create a new user:</h2>
+        <input
+          type="text"
+          name="first"
+          id="inputFirstName"
+          class="form-control my-3"
+          placeholder="First"
+          autofocus
+        />
+        <input
+          type="text"
+          name="last"
+          id="inputLastName"
+          class="form-control my-3"
+          placeholder="Last"
+        />
+        <input
+          type="password"
+          name="password"
+          id="inputPassword"
+          class="form-control my-3"
+          placeholder="Password"
+        />
+        <input
+          type="email"
+          name="email"
+          id="inputEmail"
+          class="form-control my-3"
+          placeholder="Email address"
+        />
+        <input
+          type="text"
+          name="mobileNum"
+          id="inputMobile"
+          pattern="[0-9]{11}"
+          class="form-control my-3"
+          placeholder="Mobile (optional)"
+        />
+        <input
+          type="text"
+          name="zipCode"
+          id="inputZipCode"
+          pattern="[0-9]{5}"
+          class="form-control my-3"
+          placeholder="Zip Code"
+        />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+          Sign Up
+        </button>
+      </form>
+    </div>
+  </div>
 </div>

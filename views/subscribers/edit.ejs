@@ -1,53 +1,60 @@
-<div class="data-form">
-  <form
-    class="form-signin"
-    action="<%=`/subscribers/${subscriber._id}/update?_method=PUT`%>"
-    method="POST"
-  >
-    <h2 class="form-signin-heading">Edit subscriber:</h2>
-    <label for="inputName">Name</label>
-    <input
-      type="text"
-      name="name"
-      id="inputName"
-      class="form-control"
-      value="<%= subscriber.name %>"
-      placeholder="Name"
-      autofocus
+<div class="row align-items-center mb-5 mt-3">
+  <div class="col-lg-7">
+    <img
+      class="img-fluid rounded mb-4 mb-lg-0"
+      src="/images/graph.png"
+      alt=""
     />
-    <label for="inputEmail">Email</label>
-    <input
-      type="email"
-      name="email"
-      id="inputEmail"
-      class="form-control"
-      value="<%= subscriber.email %>"
-      placeholder="Email address"
-      required
-    />
-    <label for="inputMobile">Mobile</label>
-    <input
-      type="text"
-      name="mobileNum"
-      id="inputMobile"
-      pattern="[0-9]{11}"
-      class="form-control"
-      value="<%= subscriber.mobileNum %>"
-      placeholder="Mobile (optional)"
-    />
-    <label for="inputZipCode">Zip Code</label>
-    <input
-      type="text"
-      name="zipCode"
-      id="inputZipCode"
-      pattern="[0-9]{5}"
-      class="form-control"
-      value="<%= subscriber.zipCode %>"
-      placeholder="Zip Code"
-      required
-    />
-    <br /><button class="btn btn-lg btn-primary btn-block" type="submit">
-      Save
-    </button>
-  </form>
+  </div>
+  <div class="col-lg-5">
+    <div class="data-form">
+      <form
+        class="form-signin"
+        action="<%=`/subscribers/${subscriber._id}/update?_method=PUT`%>"
+        method="POST"
+      >
+        <h2 class="form-signin-heading">Edit subscriber:</h2>
+        <input
+          type="text"
+          name="name"
+          id="inputName"
+          class="form-control my-3"
+          value="<%= subscriber.name %>"
+          placeholder="Name"
+          autofocus
+        />
+        <input
+          type="email"
+          name="email"
+          id="inputEmail"
+          class="form-control my-3"
+          value="<%= subscriber.email %>"
+          placeholder="Email address"
+          required
+        />
+        <input
+          type="text"
+          name="mobileNum"
+          id="inputMobile"
+          pattern="[0-9]{11}"
+          class="form-control my-3"
+          value="<%= subscriber.mobileNum %>"
+          placeholder="Mobile (optional)"
+        />
+        <input
+          type="text"
+          name="zipCode"
+          id="inputZipCode"
+          pattern="[0-9]{5}"
+          class="form-control my-3"
+          value="<%= subscriber.zipCode %>"
+          placeholder="Zip Code"
+          required
+        />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+          Save
+        </button>
+      </form>
+    </div>
+  </div>
 </div>
