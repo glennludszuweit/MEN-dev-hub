@@ -134,6 +134,7 @@ module.exports = {
 
   authenticate: passport.authenticate("local", {
     successRedirect: "/",
+    successFlash: "Logged in!",
     failureRedirect: "/users/login",
     failureFlash: "Failed to login.",
   }),
@@ -170,6 +171,7 @@ module.exports = {
 
   logout: (req, res, next) => {
     req.logout();
+    req.flash("success", "Logged out successfuly!");
     res.locals.redirect = "/";
     next();
   },
