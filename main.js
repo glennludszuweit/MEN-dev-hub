@@ -16,6 +16,7 @@ const errorController = require("./controllers/errorController");
 const subscribersController = require("./controllers/subscribersController.js");
 const usersController = require("./controllers/usersController.js");
 const coursesController = require("./controllers/coursesController.js");
+const uploadsController = require("./controllers/uploadsController");
 
 const User = require("./models/user");
 
@@ -155,6 +156,7 @@ router.get("/courses/new", coursesController.new);
 router.post(
   "/courses/create",
   coursesController.create,
+  uploadsController,
   coursesController.redirectView
 );
 router.get("/courses/:id/edit", coursesController.edit);
