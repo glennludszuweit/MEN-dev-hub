@@ -11,55 +11,46 @@ const expressValidator = require("express-validator");
 const passport = require("passport");
 const fileUpload = require("express-fileupload");
 
-const homeController = require("./controllers/homeController");
-const errorController = require("./controllers/errorController");
-const subscribersController = require("./controllers/subscribersController.js");
-const usersController = require("./controllers/usersController.js");
-const coursesController = require("./controllers/coursesController.js");
-const uploadsController = require("./controllers/uploadsController");
-
+const router = require("./routes/index");
 const User = require("./models/user");
 
 const app = express();
-const router = express.Router();
 
-//////////DATABASE
+//Database
 mongoose.connect("mongodb://localhost:27017/kitchenhub", {
   useNewUrlParser: true,
 });
 mongoose.set("useCreateIndex", true);
 
-//////////MIDDLEWARES
 //Project Environment
 app.set("port", process.env.PORT || 4000);
 app.set("view engine", "ejs");
 
 //Static Layout
-router.use(express.static("public"));
-router.use(layouts);
+app.use(express.static("public"));
+app.use(layouts);
 
 //Body Parser
-router.use(
+app.use(
   express.urlencoded({
     extended: false,
   })
 );
-router.use(express.json());
+app.use(express.json());
 
 //File Upload
-router.use(fileUpload());
+app.use(fileUpload());
 
-//Express Router
-app.use("/", router);
-router.use(
+//Method Override
+app.use(
   methodOverride("_method", {
     methods: ["POST", "GET"],
   })
 );
 
-//Flash Messages
-router.use(cookieParser("secret_passcode"));
-router.use(
+//Session and Cookies
+app.use(cookieParser("secret_passcode"));
+app.use(
   expressSession({
     secret: "secret_passcode",
     cookie: {
@@ -71,14 +62,15 @@ router.use(
 );
 
 //Passport
-router.use(passport.initialize());
-router.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-router.use(connectFlash());
-router.use((req, res, next) => {
+//Flash Messages
+app.use(connectFlash());
+app.use((req, res, next) => {
   res.locals.flashMessages = req.flash();
   res.locals.loggedIn = req.isAuthenticated();
   res.locals.currentUser = req.user;
@@ -86,96 +78,12 @@ router.use((req, res, next) => {
 });
 
 //Express Validator
-router.use(expressValidator());
+app.use(expressValidator());
 
-//////////ROUTE REGISTERS
-//Home Routes
-router.get("/", homeController.index);
+//Routes
+app.use("/", router);
 
-//Users Routes
-router.get("/users/login", usersController.login);
-router.post("/users/login", usersController.authenticate);
-router.get(
-  "/users/logout",
-  usersController.logout,
-  usersController.redirectView
-);
-router.get("/users", usersController.index, usersController.indexView);
-router.get("/users/new", usersController.new);
-router.post(
-  "/users/create",
-  usersController.validate,
-  usersController.create,
-  usersController.redirectView
-);
-router.get("/users/:id/edit", usersController.edit);
-router.put(
-  "/users/:id/update",
-  usersController.update,
-  usersController.redirectView
-);
-router.get("/users/:id", usersController.show, usersController.showView);
-router.delete(
-  "/users/:id/delete",
-  usersController.delete,
-  usersController.redirectView
-);
-
-//Subscribers Routes
-router.get(
-  "/subscribers",
-  subscribersController.index,
-  subscribersController.indexView
-);
-router.get("/subscribers/new", subscribersController.new);
-router.post(
-  "/subscribers/create",
-  subscribersController.create,
-  subscribersController.redirectView
-);
-router.get("/subscribers/:id/edit", subscribersController.edit);
-router.put(
-  "/subscribers/:id/update",
-  subscribersController.update,
-  subscribersController.redirectView
-);
-router.get(
-  "/subscribers/:id",
-  subscribersController.show,
-  subscribersController.showView
-);
-router.delete(
-  "/subscribers/:id/delete",
-  subscribersController.delete,
-  subscribersController.redirectView
-);
-
-//Courses Routes
-router.get("/courses", coursesController.index, coursesController.indexView);
-router.get("/courses/new", coursesController.new);
-router.post(
-  "/courses/create",
-  coursesController.create,
-  coursesController.redirectView
-);
-router.get("/courses/:id/edit", coursesController.edit);
-router.put(
-  "/courses/:id/update",
-  coursesController.update,
-  coursesController.redirectView
-);
-router.get("/courses/:id", coursesController.show, coursesController.showView);
-router.delete(
-  "/courses/:id/delete",
-  coursesController.delete,
-  coursesController.redirectView
-);
-
-//Error Routes
-router.use(errorController.pageNotFoundError);
-router.use(errorController.internalServerError);
-
-//////////SERVER
+//Server
 app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost:${app.get("port")}`);
 });
