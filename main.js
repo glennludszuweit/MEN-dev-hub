@@ -156,7 +156,6 @@ router.get("/courses/new", coursesController.new);
 router.post(
   "/courses/create",
   coursesController.create,
-  uploadsController,
   coursesController.redirectView
 );
 router.get("/courses/:id/edit", coursesController.edit);

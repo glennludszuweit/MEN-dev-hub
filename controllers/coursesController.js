@@ -33,7 +33,7 @@ module.exports = {
   },
 
   create: (req, res, next) => {
-    let courseParams = getCourseParams(req.body && req.files);
+    let courseParams = getCourseParams(req.body);
     Course.create(courseParams)
       .then((course) => {
         req.flash("success", `${course.title} added!`);
@@ -115,6 +115,7 @@ module.exports = {
       })
       .catch((error) => {
         console.log(`Error deleting course by ID: ${error.message}`);
+        res.locals.redirect = "/courses";
         next();
       });
   },
