@@ -9,6 +9,7 @@ const connectFlash = require("connect-flash");
 const expressSession = require("express-session");
 const expressValidator = require("express-validator");
 const passport = require("passport");
+const fileUpload = require("express-fileupload");
 
 const homeController = require("./controllers/homeController");
 const errorController = require("./controllers/errorController");
@@ -43,6 +44,9 @@ router.use(
   })
 );
 router.use(express.json());
+
+//File Upload
+router.use(fileUpload());
 
 //Express Router
 app.use("/", router);

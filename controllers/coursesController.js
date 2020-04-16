@@ -33,7 +33,7 @@ module.exports = {
   },
 
   create: (req, res, next) => {
-    let courseParams = getCourseParams(req.body);
+    let courseParams = getCourseParams(req.body && req.files);
     Course.create(courseParams)
       .then((course) => {
         req.flash("success", `${course.title} added!`);
