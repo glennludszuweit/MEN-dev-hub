@@ -10,6 +10,7 @@ const expressSession = require("express-session");
 const expressValidator = require("express-validator");
 const passport = require("passport");
 const fileUpload = require("express-fileupload");
+const nodeMailer = require("nodemailer");
 
 const router = require("./routes/index");
 const User = require("./models/user");
@@ -82,6 +83,10 @@ app.use(expressValidator());
 
 //Routes
 app.use("/", router);
+
+app.post("/send", (req, res) => {
+  console.log(req.body);
+});
 
 //Server
 app.listen(app.get("port"), () => {

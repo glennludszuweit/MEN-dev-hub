@@ -50,6 +50,10 @@ module.exports = {
       });
   },
 
+  send: (req, res) => {
+    console.log(req.body);
+  },
+
   redirectView: (req, res, next) => {
     let redirectPath = res.locals.redirect;
     if (redirectPath !== undefined) res.redirect(redirectPath);
