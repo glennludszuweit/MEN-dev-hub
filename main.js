@@ -10,7 +10,6 @@ const expressSession = require("express-session");
 const expressValidator = require("express-validator");
 const passport = require("passport");
 const fileUpload = require("express-fileupload");
-const nodeMailer = require("nodemailer");
 
 const router = require("./routes/index");
 const User = require("./models/user");

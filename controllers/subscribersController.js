@@ -1,6 +1,7 @@
 "use strict";
 
 const Subscriber = require("../models/subscriber");
+const nodemailer = require("nodemailer");
 
 const getSubscriberParams = (body) => {
   return {
@@ -50,7 +51,7 @@ module.exports = {
       });
   },
 
-  send: (req, res) => {
+  send: (req, res, next) => {
     const output = `
       <p>You have a new message.</p>
       <h3>Contact Details</h3>
@@ -63,29 +64,42 @@ module.exports = {
     `;
 
     let transporter = nodemailer.createTransport({
-      host: "smtp.ethereal.email",
+      host: "smtp.strato.de",
       port: 587,
       secure: false, // true for 465, false for other ports
       auth: {
-        user: testAccount.user, // generated ethereal user
-        pass: testAccount.pass, // generated ethereal password
+        user: "info@gnglab.de", // generated ethereal user
+        pass: "Killdsug@r666", // generated ethereal password
       },
     });
 
     let mailOptions = {
-      from: '"Fred Foo 👻" <foo@example.com>', // sender address
-      to: "bar@example.com, baz@example.com", // list of receivers
-      subject: "Hello ✔", // Subject line
-      text: "Hello world?", // plain text body
+      from: '"DevHub" <info@gnglab.de>', // sender address
+      to: "glenn.ludszuweit@gmail.com", // list of receivers
+      subject: `DevHub Message from ${req.body.email}`, // Subject line
+      text: "", // plain text body
       html: output, // html body
     };
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        return console.log(error);
-      }
-      console.log("Message sent: %s", info.messageId);
-      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    });
+    transporter
+      .sendMail(mailOptions)
+      .then(() => {
+        req.flash("success", `Message Sent!`);
+        res.locals.redirect = "/subscribers/new";
+        next();
+      })
+      .catch((error) => {
+        res.locals.redirect = "/subscribers/new";
+        req.flash("error", `Falied: ${error.message}`);
+        next();
+      });
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //   if (error) {
+    //     return console.log(error);
+    //   }
+    //   res.render("subscribers/new", { msg: "Message Sent!" });
+    //   console.log("Message sent: %s", info.messageId);
+    //   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    // });
   },
 
   redirectView: (req, res, next) => {
