@@ -1,10 +1,8 @@
 "use strict";
 
 const Course = require("../models/course");
-const multer = require("multer");
-const upload = multer({ dest: "uploads/" });
 
-const getCourseParams = (body) => {
+const getCourseParams = (body, file) => {
   return {
     title: body.title,
     description: body.description,
@@ -38,10 +36,17 @@ module.exports = {
     res.render("courses/new");
   },
 
+  upload: (req, res, next) => {
+    upload.single("courseImage").then((course) => {
+      console.log(req.file);
+    });
+  },
+
   create: (req, res, next) => {
-    let courseParams = getCourseParams(req.body);
+    let courseParams = getCourseParams(req.body && req.file);
     Course.create(courseParams)
       .then((course) => {
+        console.log(req.file);
         req.flash("success", `${course.title} added!`);
         res.locals.redirect = "/courses";
         res.locals.course = course;
