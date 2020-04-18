@@ -1,6 +1,8 @@
 "use strict";
 
 const Course = require("../models/course");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 
 const getCourseParams = (body) => {
   return {
