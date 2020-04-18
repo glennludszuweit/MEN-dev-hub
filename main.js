@@ -9,7 +9,6 @@ const connectFlash = require("connect-flash");
 const expressSession = require("express-session");
 const expressValidator = require("express-validator");
 const passport = require("passport");
-const fileUpload = require("express-fileupload");
 
 const router = require("./routes/index");
 const User = require("./models/user");
@@ -37,9 +36,6 @@ app.use(
   })
 );
 app.use(express.json());
-
-//File Upload
-app.use(fileUpload());
 
 //Method Override
 app.use(

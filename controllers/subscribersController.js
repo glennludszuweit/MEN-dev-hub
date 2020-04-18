@@ -92,14 +92,6 @@ module.exports = {
         req.flash("error", `Falied: ${error.message}`);
         next();
       });
-    // transporter.sendMail(mailOptions, (error, info) => {
-    //   if (error) {
-    //     return console.log(error);
-    //   }
-    //   res.render("subscribers/new", { msg: "Message Sent!" });
-    //   console.log("Message sent: %s", info.messageId);
-    //   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    // });
   },
 
   redirectView: (req, res, next) => {
