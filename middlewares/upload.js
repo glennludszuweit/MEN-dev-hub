@@ -8,8 +8,6 @@ var storage = multer.diskStorage({
   filename: function (req, file, cb) {
     var ext = path.extname(file.originalname);
     cb(null, Date.now() + ext);
-    // const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    // cb(null, file.fieldname + "-" + uniqueSuffix);
   },
 });
 
@@ -29,14 +27,8 @@ var upload = multer({
       console.log("Allowed only .png, .jpg, .jpeg and .gif");
     }
   },
-  // function(req, res) {
-  //   var newItem = new Item();
-  //   newItem.img.data = fs.readFileSync(req.files.userPhoto.path);
-  //   newItem.img.contentType = `image/png`;
-  //   newItem.save();
-  // },
   limits: {
-    fileSize: 1024 * 1024 * 10,
+    fileSize: 1024 * 1024 * 5,
   },
 });
 

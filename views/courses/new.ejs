@@ -1,20 +1,30 @@
-<div class="row align-items-center mb-3 mt-3">
-  <div class="col-lg-7">
-    <img
-      class="img-fluid rounded mb-4 mb-lg-0"
-      src="/images/people.jpg"
-      alt=""
-    />
-  </div>
-  <div class="col-lg-5">
-    <div class="data-form">
-      <form
-        class="form-signin"
-        action="<%=`/courses/create`%>"
-        method="POST"
-        enctype="multipart/form-data"
-      >
-        <h2 class="form-signin-heading">Add new course:</h2>
+<form
+  class="form-signin"
+  action="<%=`/courses/create`%>"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <div class="row align-items-center mb-3 mt-3">
+    <div class="container py-3">
+      <h2 class="form-signin-heading">Add new course:</h2>
+      <hr />
+    </div>
+
+    <div class="col-lg-6">
+      <div class="custom-file">
+        <input
+          type="file"
+          class="custom-file-input"
+          id="imgInp"
+          name="image"
+          required
+        />
+        <label class="custom-file-label" for="imgInp">Choose file...</label>
+      </div>
+      <img id="img-upload" />
+    </div>
+    <div class="col-lg-6">
+      <div class="data-form">
         <input
           type="text"
           name="title"
@@ -57,18 +67,18 @@
           placeholder="Cost"
           required
         />
-        <input
+        <!-- <input
           type="file"
           name="image"
           id="inputImage"
-          class="form-control my-3"
+          class="mb-3"
           placeholder="Image"
           required
-        />
+        /> -->
         <button class="btn btn-lg btn-primary btn-block" type="submit">
           Submit
         </button>
-      </form>
+      </div>
     </div>
   </div>
-</div>
+</form>

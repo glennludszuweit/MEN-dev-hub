@@ -38,25 +38,16 @@ module.exports = {
 
   create: (req, res, next) => {
     // let courseParams = getCourseParams(req.body);
-    // if (req.file) {
-    //   Course.image = req.file.buffer;
-    // }
-    // let image = req.files.image;
-    // image.mv("public/courses/images/ + image.name", function (error) {
-    //   if (error) {
-    //     console.log("Coudn't upload image.");
-    //   } else {
-    //     console.log("File uploaded");
-    //   }
-    // });
-    let courseParams = new Course({
+    var courseParams = new Course({
       title: req.body.title,
       description: req.body.description,
       zipCode: req.body.zipCode,
       maxStudents: req.body.maxStudents,
       cost: req.body.cost,
-      image: req.file.path,
     });
+    if (req.file) {
+      courseParams.image = req.file.path;
+    }
     Course.create(courseParams)
       .then((course) => {
         req.flash("success", `${course.title} added!`);

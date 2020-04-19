@@ -25,7 +25,7 @@ mongoose.set("useCreateIndex", true);
 app.set("port", process.env.PORT || 4000);
 app.set("view engine", "ejs");
 
-// app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static("uploads"));
 app.use(express.static("public"));
 app.use(layouts);
 
