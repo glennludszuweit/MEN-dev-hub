@@ -2,7 +2,7 @@
 
 const Course = require("../models/course");
 
-const getCourseParams = (body, file) => {
+const getCourseParams = (body) => {
   return {
     title: body.title,
     description: body.description,
@@ -36,17 +36,29 @@ module.exports = {
     res.render("courses/new");
   },
 
-  upload: (req, res, next) => {
-    upload.single("courseImage").then((course) => {
-      console.log(req.file);
-    });
-  },
-
   create: (req, res, next) => {
-    let courseParams = getCourseParams(req.body && req.file);
+    // let courseParams = getCourseParams(req.body);
+    // if (req.file) {
+    //   Course.image = req.file.buffer;
+    // }
+    // let image = req.files.image;
+    // image.mv("public/courses/images/ + image.name", function (error) {
+    //   if (error) {
+    //     console.log("Coudn't upload image.");
+    //   } else {
+    //     console.log("File uploaded");
+    //   }
+    // });
+    let courseParams = new Course({
+      title: req.body.title,
+      description: req.body.description,
+      zipCode: req.body.zipCode,
+      maxStudents: req.body.maxStudents,
+      cost: req.body.cost,
+      image: req.file.path,
+    });
     Course.create(courseParams)
       .then((course) => {
-        console.log(req.file);
         req.flash("success", `${course.title} added!`);
         res.locals.redirect = "/courses";
         res.locals.course = course;

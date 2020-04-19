@@ -27,6 +27,10 @@ var courseSchema = new Schema(
       default: 0,
       min: [0, "Course cannot have a negative cost"],
     },
+    image: {
+      data: Buffer,
+      contentType: String,
+    },
   },
   {
     timestamps: true,
