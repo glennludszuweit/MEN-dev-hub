@@ -15,6 +15,7 @@ const getCourseParams = (body) => {
 module.exports = {
   index: (req, res, next) => {
     Course.find()
+      .sort({ _id: -1 })
       .then((courses) => {
         res.locals.courses = courses;
         next();

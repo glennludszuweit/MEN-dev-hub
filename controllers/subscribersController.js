@@ -64,11 +64,11 @@ module.exports = {
     `;
 
     let transporter = nodemailer.createTransport({
-      host: "smtp.strato.de",
+      host: "smtp.gmail.com",
       port: 587,
       secure: false, // true for 465, false for other ports
       auth: {
-        user: "info@gnglab.de", // generated ethereal user
+        user: "info@glennludszuweit.de", // generated ethereal user
         pass: "Killdsug@r666", // generated ethereal password
       },
     });
