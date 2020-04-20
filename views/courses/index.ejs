@@ -7,10 +7,10 @@
   <% } %> <% courses.forEach(course => { %>
   <hr />
   <div class="row mb-3">
-    <div class="col-sm-3">
+    <div class="col-lg-3">
       <img class="img-thumbnail" src="<%= course.image %>" alt="Course Image" />
     </div>
-    <div class="col-lg-7 mt-2">
+    <div class="col-lg-8 mt-2">
       <h3>
         <a href="<%= `/courses/${course._id}` %>">
           <%= course.title %>
@@ -31,7 +31,7 @@
         >
         <% } %>
     </div>
-    <div class="col-md-2 mt-2">
+    <div class="col-lg-1 mt-2">
       <h4>
         $ <%= course.cost %><span>
       </h4>
