@@ -36,11 +36,8 @@ module.exports = {
     let subscriberParams = getSubscriberParams(req.body);
     Subscriber.create(subscriberParams)
       .then((subscriber) => {
-        req.flash(
-          "success",
-          `${subscriber.name}'s account created successfuly!`
-        );
-        res.locals.redirect = "/subscribers";
+        req.flash("success", `${subscriber.name} subscribed successfuly!`);
+        res.locals.redirect = "/subscribers/new";
         res.locals.subscriber = subscriber;
         next();
       })

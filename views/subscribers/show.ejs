@@ -34,6 +34,7 @@
   </div>
 </div>
 <div class="row mt-3 mb-3">
+  <% if (loggedIn) { %>
   <div class="col-md-4 mb-3">
     <div>
       <a
@@ -55,6 +56,7 @@
       >
     </div>
   </div>
+  <% } %>
   <div class="col-md-4 mb-3">
     <div>
       <a class="btn btn-success w-100" href="/subscribers"
