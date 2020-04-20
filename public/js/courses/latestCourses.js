@@ -51,7 +51,7 @@ $(document).ready(() => {
                       <p class="card-text">${course.description}</p>
                       </div>
                       <div class="card-body">
-                        <button class="btn btn-primary btn-block join-button" data-id="${course._id}" style="cursor: pointer; color: #fff;">Join</button>
+                        <button class="btn btn-primary btn-block join-btn" data-id="${course._id}" style="cursor: pointer; color: #fff;">Join</button>
                       </div>
                     </div>
                   </div>
@@ -63,3 +63,20 @@ $(document).ready(() => {
     addJoinListener();
   });
 });
+
+let addJoinListener = () => {
+  $(".join-btn").click((event) => {
+    let $button = $(event.target);
+    let courseId = $button.data("id");
+    $.get(`/courses?format=json/${courseId}/join`, (data) => {
+      if (data && data.success) {
+        $button
+          .text("Joined")
+          .addClass("btn-secondary")
+          .removeClass("btn-primary");
+      } else {
+        $button.text("Try Later");
+      }
+    });
+  });
+};
