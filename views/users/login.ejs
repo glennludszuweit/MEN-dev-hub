@@ -1,12 +1,5 @@
 <div class="row align-items-center mb-3 mt-3">
-  <div class="col-lg-7">
-    <img
-      class="img-fluid rounded mb-4 mb-lg-0"
-      src="/images/graph.png"
-      alt=""
-    />
-  </div>
-  <div class="col-lg-5">
+  <div class="col-lg-6">
     <div class="data-form">
       <form class="form-signin" action="/users/login" method="POST">
         <h2 class="form-signin-heading">User Login:</h2>
@@ -28,6 +21,62 @@
         />
         <button class="btn btn-lg btn-primary btn-block" type="submit">
           Submit
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="data-form">
+      <form class="form-signin" action="/users/create" method="POST">
+        <h2 class="form-signin-heading">Create a new user:</h2>
+        <input
+          type="text"
+          name="first"
+          id="inputFirstName"
+          class="form-control my-3"
+          placeholder="First"
+          autofocus
+        />
+        <input
+          type="text"
+          name="last"
+          id="inputLastName"
+          class="form-control my-3"
+          placeholder="Last"
+        />
+        <input
+          type="password"
+          name="password"
+          id="inputPassword"
+          class="form-control my-3"
+          placeholder="Password"
+        />
+        <input
+          type="email"
+          name="email"
+          id="inputEmail"
+          class="form-control my-3"
+          placeholder="Email address"
+        />
+        <input
+          type="text"
+          name="mobileNum"
+          id="inputMobile"
+          pattern="[0-9]{11}"
+          class="form-control my-3"
+          placeholder="Mobile (optional)"
+        />
+        <input
+          type="text"
+          name="zipCode"
+          id="inputZipCode"
+          pattern="[0-9]{5}"
+          class="form-control my-3"
+          placeholder="Zip Code"
+        />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+          Sign Up
         </button>
       </form>
     </div>

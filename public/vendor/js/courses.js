@@ -44,7 +44,7 @@ $(document).ready(() => {
       data.forEach((course) => {
         $("#latestCourses").append(
           `
-                  <div class="col-lg-4 mb-2">
+                  <div class="col-lg-4 mb-3">
                     <div class="card">
                       <img class="card-img-top" src="${course.image}" alt="Card image cap" />
                       <div class="card-body">
@@ -52,7 +52,7 @@ $(document).ready(() => {
                       <p class="card-text">${course.description}</p>
                       </div>
                       <div class="card-body">
-                        <button class="btn btn-primary btn-block join-btn" data-id="${course._id}" style="cursor: pointer; color: #fff;">Join</button>
+                        <button class="btn btn-primary btn-block join-btn" data-id="${course._id}" style="color: #fff;">$ ${course.cost}</button>
                       </div>
                     </div>
                   </div>
@@ -82,7 +82,7 @@ $(document).ready(() => {
                     <div class="col-lg-8 mt-2">
                       <h3><a href="/courses/${course._id}">${course.title}</a></h3>
                       <p>${course.description}</p>
-                      <a class="btn btn-primary btn-sm join-btn" data-id="${course._id}" style="width: 80px; color: #fff; cursor: pointer;">Join</a></span>
+                      <button class="btn btn-primary btn-sm join-btn" data-id="${course._id}" style="width: 80px; color: #fff;">Join</button>
                     </div>
                     <div class="col-lg-1 mt-2">
                       <h4>
