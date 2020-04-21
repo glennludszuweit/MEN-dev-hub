@@ -14,6 +14,9 @@
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
+    <!-- Fontawesome -->
+    <link href="/vendor/fontawesome/css/all.min.css" rel="stylesheet" />
+
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/css/small-business.css" />
     <link rel="stylesheet" href="/css/coursesImgUpload.css" />
@@ -56,11 +59,15 @@
               <a class="nav-link" href="/users">Users</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-secondary" href="/users/logout">Logout</a>
+              <a class="btn btn-secondary" href="/users/logout"
+                ><i class="fa fa-sign-out-alt"></i
+              ></a>
             </li>
             <% } else { %>
             <li class="nav-item">
-              <a class="btn btn-secondary" href="/users/login">Login</a>
+              <a class="btn btn-primary" href="/users/login"
+                ><i class="fa fa-sign-in-alt"></i
+              ></a>
             </li>
             <% } %>
           </ul>

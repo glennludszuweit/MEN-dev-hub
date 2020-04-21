@@ -43,7 +43,7 @@ module.exports = {
     User.register(newUser, req.body.password, (error, user) => {
       if (user) {
         req.flash("success", `${user.fullName}'s account created!`);
-        res.locals.redirect = "/users";
+        res.locals.redirect = "/";
         next();
       } else {
         req.flash("error", `Failed: ${error.message}`);
