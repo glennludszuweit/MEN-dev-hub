@@ -4,38 +4,6 @@
   <div class="my-3">
     <a class="btn btn-secondary" href="/courses/new">Add Course</a>
   </div>
-  <% } %> <% courses.forEach(course => { %>
-  <hr />
-  <div class="row mb-3">
-    <div class="col-lg-3">
-      <img class="img-thumbnail" src="<%= course.image %>" alt="Course Image" />
-    </div>
-    <div class="col-lg-8 mt-2">
-      <h3>
-        <a href="<%= `/courses/${course._id}` %>">
-          <%= course.title %>
-        </a>
-      </h3>
-      <p>
-        <%= course.description %>
-      </p>
-      <% if (loggedIn) { %>
-      <a href="<%=`courses/${course._id}/edit`%>"> Edit</a>
-      <a
-        href="<%= `courses/${course._id}/delete?_method=DELETE` %>"
-        onclick="return confirm('Are you sure you want to delete this record?')"
-        >Delete</a
-      >
-      <% } else { %>
-      <a class="btn btn-primary btn-sm" style="width: 80px; color: #fff; cursor: pointer;">Join</a></span
-        >
-        <% } %>
-    </div>
-    <div class="col-lg-1 mt-2">
-      <h4>
-        $ <%= course.cost %><span>
-      </h4>
-    </div>
-  </div>
-  <% }); %>
+  <% } %>
+  <div id="coursesIndex"></div>
 </div>

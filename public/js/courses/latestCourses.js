@@ -34,11 +34,12 @@
 //   })
 // }
 
+//////////LATEST COURSES//////////
 $(document).ready(() => {
   $("#latestCourses").html("");
   $.get("/courses?format=json", (data) => {
     let c = data;
-    c.length = 3;
+    c.length = 6;
     if (c.length > 0) {
       data.forEach((course) => {
         $("#latestCourses").append(
@@ -64,6 +65,41 @@ $(document).ready(() => {
   });
 });
 
+//////////COURSES INDEX//////////
+$(document).ready(() => {
+  $("#coursesIndex").html("");
+  $.get("/courses?format=json", (data) => {
+    let c = data;
+    if (c.length > 0) {
+      data.forEach((course) => {
+        $("#coursesIndex").append(
+          `
+                  <hr />
+                  <div class="row mb-3 mt-3">
+                    <div class="col-lg-3">
+                      <img class="img-thumbnail" src="${course.image}" alt="Course Image" />
+                    </div>
+                    <div class="col-lg-8 mt-2">
+                      <h3><a href="/courses/${course._id}">${course.title}</a></h3>
+                      <p>${course.description}</p>
+                      <a class="btn btn-primary btn-sm join-btn" data-id="${course._id}" style="width: 80px; color: #fff; cursor: pointer;">Join</a></span>
+                    </div>
+                    <div class="col-lg-1 mt-2">
+                      <h4>
+                        $ ${course.cost}<span>
+                      </h4>
+                    </div>
+                  </div>
+          `
+        );
+      });
+    }
+  }).then(() => {
+    addJoinListener();
+  });
+});
+
+//////////BUTTON LISTENER/////////
 let addJoinListener = () => {
   $(".join-btn").click((event) => {
     let $button = $(event.target);
