@@ -34,6 +34,41 @@
 //   })
 // }
 
+//////////COURSES IMAGE UPLOAD//////////
+$(document).ready(function () {
+  $(document).on("change", ".btn-file :file", function () {
+    var input = $(this),
+      label = input.val().replace(/\\/g, "/").replace(/.*\//, "");
+    input.trigger("fileselect", [label]);
+  });
+
+  $(".btn-file :file").on("fileselect", function (event, label) {
+    var input = $(this).parents(".input-group").find(":text"),
+      log = label;
+
+    if (input.length) {
+      input.val(log);
+    } else {
+      if (log) alert(log);
+    }
+  });
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $("#img-upload").attr("src", e.target.result);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#imgInp").change(function () {
+    readURL(this);
+  });
+});
+
 //////////LATEST COURSES//////////
 $(document).ready(() => {
   $("#latestCourses").html("");
@@ -116,3 +151,26 @@ let addJoinListener = () => {
     });
   });
 };
+
+//////////Google MAPS//////////
+function initMap() {
+  var options = {
+    center: { lat: 51.2277, lng: 6.7735 },
+    zoom: 10,
+  };
+
+  var map = new google.maps.Map(document.getElementById("map"), options);
+
+  var marker = new google.maps.Marker({
+    position: { lat: 51.29409, lng: 6.81929 },
+    map: map,
+  });
+
+  // var infoWindow = new google.maps.InfoWindow({
+  //   content: `<h4>gngLAB GmbH</h4>`,
+  // });
+
+  // marker.addListener("click", function () {
+  //   infoWindow.open(map, marker);
+  // });
+}
