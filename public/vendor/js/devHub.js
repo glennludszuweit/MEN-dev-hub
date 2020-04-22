@@ -74,9 +74,9 @@ $(document).ready(() => {
   $("#latestCourses").html("");
   $.get("/courses?format=json", (data) => {
     let c = data;
-    c.length = 6;
+    c.length = 3;
     if (c.length > 0) {
-      data.forEach((course) => {
+      c.forEach((course) => {
         $("#latestCourses").append(
           `
                   <div class="col-lg-4 mb-3">
@@ -103,12 +103,12 @@ $(document).ready(() => {
 //////////COURSES INDEX//////////
 $(document).ready(() => {
   $("#coursesIndex").html("");
-  $.get("/courses?format=json", (data) => {
-    let c = data;
-    if (c.length > 0) {
-      data.forEach((course) => {
-        $("#coursesIndex").append(
-          `
+  $.get("/api/courses", (results = {}) => {
+    let data = results.data;
+    if (!data || !data.courses) return;
+    data.courses.forEach((course) => {
+      $("#coursesIndex").append(
+        `
                   <hr />
                   <div class="row mb-3 mt-3">
                     <div class="col-lg-3">
@@ -126,9 +126,8 @@ $(document).ready(() => {
                     </div>
                   </div>
           `
-        );
-      });
-    }
+      );
+    });
   }).then(() => {
     addJoinListener();
   });
@@ -139,7 +138,8 @@ let addJoinListener = () => {
   $(".join-btn").click((event) => {
     let $button = $(event.target);
     let courseId = $button.data("id");
-    $.get(`/courses?format=json/${courseId}/join`, (data) => {
+    $.get(`/api/courses/${courseId}/join`, (results = {}) => {
+      let data = results.data;
       if (data && data.success) {
         $button
           .text("Joined")
