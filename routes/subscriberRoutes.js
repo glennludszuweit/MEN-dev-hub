@@ -19,11 +19,7 @@ router.put(
   subscribersController.update,
   subscribersController.redirectView
 );
-router.get(
-  "/:id",
-  subscribersController.show,
-  subscribersController.redirectView
-);
+router.get("/:id", subscribersController.show, subscribersController.showView);
 router.delete(
   "/:id/delete",
   subscribersController.delete,
