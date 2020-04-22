@@ -48,6 +48,10 @@ module.exports = {
       });
   },
 
+  contact: (req, res) => {
+    res.render("subscribers/contact");
+  },
+
   send: (req, res, next) => {
     const output = `
       <p>You have a new message.</p>

@@ -1,8 +1,9 @@
 <div class="row align-items-center mb-3 mt-3">
   <div class="col-lg-6">
     <div class="data-form">
-      <form class="form-signin" action="/subscribers/create" method="POST">
-        <h2 class="form-signin-heading">Subscribe to learn more.</h2>
+      <form class="form-signin" action="send" method="POST">
+        <h2 class="form-signin-heading">Contact Us</h2>
+
         <input
           type="text"
           name="name"
@@ -19,35 +20,41 @@
           placeholder="Email address"
           required
         />
-        <input
+        <textarea
           type="text"
-          name="mobileNum"
-          id="inputMobile"
-          pattern="[0-9]{11}"
+          name="contactMsg"
+          id="inputMessage"
           class="form-control my-3"
-          placeholder="Mobile (optional)"
-        />
-        <input
-          type="text"
-          name="zipCode"
-          id="inputZipCode"
-          pattern="[0-9]{5}"
-          class="form-control my-3"
-          placeholder="Zip Code"
+          placeholder="Message"
+          rows="6"
           required
-        />
+        ></textarea>
         <button class="btn btn-lg btn-primary btn-block" type="submit">
-          Subscribe
+          Send
         </button>
       </form>
     </div>
   </div>
-
   <div class="col-lg-6 pt-3">
     <img
       class="img-fluid rounded mb-4 mb-lg-0"
-      src="/images/graph.png"
+      src="/images/people.jpg"
       alt=""
     />
   </div>
 </div>
+
+<div class="card text-white bg-primary my-5 py-4 text-center">
+  <div class="card-body">
+    <p class="text-white m-0">
+      This call to action card is a great place to showcase some important
+      information or display a clever tagline!
+    </p>
+  </div>
+</div>
+
+<div
+  class="rounded border mb-3"
+  id="map"
+  style="height: 600px; width: 100%;"
+></div>
