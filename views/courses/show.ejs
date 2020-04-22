@@ -46,7 +46,7 @@
   </div>
 </div>
 <div class="row mt-3 mb-3">
-  <% if (loggedIn) { %>
+  <% if (loggedIn && currentUser.isAdmin) { %>
   <div class="col-md-4 mb-3">
     <div>
       <a

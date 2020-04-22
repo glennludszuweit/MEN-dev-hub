@@ -1,6 +1,6 @@
 <div class="align-items-center mt-3 mb-3">
   <h2 class="my-3">Users</h2>
-  <% if (loggedIn) { %>
+  <% if (loggedIn && currentUser.isAdmin) { %>
   <div class="my-3">
     <a class="btn btn-secondary" href="/users/new">Create User</a>
   </div>
@@ -12,7 +12,7 @@
         <th>Email</th>
         <th>Mobile</th>
         <th>Zip Code</th>
-        <% if (loggedIn) { %>
+        <% if (loggedIn && currentUser.isAdmin) { %>
         <th>Edit</th>
         <th>Delete</th>
         <% } %>
@@ -35,7 +35,7 @@
         <td>
           <%= user.zipCode %>
         </td>
-        <% if (loggedIn) { %>
+        <% if (loggedIn && currentUser.isAdmin) { %>
         <td>
           <a href="<%=`/users/${user._id}/edit`%>">
             Edit

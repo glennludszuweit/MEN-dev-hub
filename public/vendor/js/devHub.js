@@ -146,7 +146,10 @@ let addJoinListener = () => {
           .addClass("btn-secondary")
           .removeClass("btn-primary");
       } else {
-        $button.text("Try Later");
+        $button
+          .text("Login to Join")
+          .addClass("btn-danger")
+          .removeClass("btn-primary");
       }
     });
   });

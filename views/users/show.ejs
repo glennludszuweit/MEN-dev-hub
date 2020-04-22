@@ -31,18 +31,14 @@
         <td>********</td>
       </tr>
     </table>
-
-    <% if(user.subscribedAccount != undefined) { %>
-    <h4 class="center">
-      This user has a
-      <a href="<%=`/subscribers/${user.subscribedAccount}`%>">
-        subscribed account</a
-      >.
+    <h4>
+      Courses Enrolled
     </h4>
-    <% } %>
-    <p>
-      This subscriber has <%= user.courses.length %> associated course(s)
-    </p>
+    <ul>
+      <% user.courses.forEach(course => { %>
+      <li><%= course.title %></li>
+      <% }) %>
+    </ul>
   </div>
 </div>
 <div class="row mt-3 mb-3">
@@ -61,14 +57,14 @@
         href="<%= `/users/${user._id}/delete?_method=DELETE` %>"
         onclick="return confirm('Are you sure you want to delete this record?')"
         a
-        >Delete</a
+        >Delete Account</a
       >
     </div>
   </div>
   <% } %>
   <div class="col-md-4 mb-3">
     <div>
-      <a class="btn btn-success w-100" href="/users">View all users</a>
+      <a class="btn btn-success w-100" href="/courses">Browse Courses</a>
     </div>
   </div>
 </div>
