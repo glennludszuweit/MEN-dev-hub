@@ -81,13 +81,21 @@ $(document).ready(() => {
           `
                   <div class="col-lg-4 mb-3">
                     <div class="card">
-                      <img class="card-img-top" src="${course.image}" alt="Card image cap" />
+                      <img class="card-img-top" src="${
+                        course.image
+                      }" alt="Card image cap" />
                       <div class="card-body">
-                      <h5 class="card-title"><a href="/courses/${course._id}">${course.title}</a></h5>
+                      <h5 class="card-title"><a href="/courses/${course._id}">${
+            course.title
+          }</a></h5>
                       <p class="card-text">${course.description}</p>
                       </div>
                       <div class="card-body">
-                        <button class="btn btn-primary btn-block join-btn" data-id="${course._id}" style="color: #fff;">$ ${course.cost}</button>
+                        <button class="btn btn-block join-btn ${
+                          course.joined ? "btn-secondary" : "btn-primary"
+                        }" data-id="${course._id}" style="color: #fff;">${
+            course.join ? "Joined" : "Join"
+          }</button>
                       </div>
                     </div>
                   </div>
@@ -112,12 +120,20 @@ $(document).ready(() => {
                   <hr />
                   <div class="row mb-3 mt-3">
                     <div class="col-lg-3">
-                      <img class="img-thumbnail" src="${course.image}" alt="Course Image" />
+                      <img class="img-thumbnail" src="${
+                        course.image
+                      }" alt="Course Image" />
                     </div>
                     <div class="col-lg-8 mt-2">
-                      <h3><a href="/courses/${course._id}">${course.title}</a></h3>
+                      <h3><a href="/courses/${course._id}">${
+          course.title
+        }</a></h3>
                       <p>${course.description}</p>
-                      <button class="btn btn-primary btn-sm join-btn" data-id="${course._id}" style="width: 80px; color: #fff;">Join</button>
+                      <button class="btn btn-sm join-btn ${
+                        course.joined ? "btn-secondary" : "btn-primary"
+                      }" data-id="${course._id}" style="color: #fff;">${
+          course.join ? "Joined" : "Join"
+        }</button>
                     </div>
                     <div class="col-lg-1 mt-2">
                       <h4>
