@@ -79,6 +79,22 @@ module.exports = {
     }
   },
 
+  filterUserCourses: (req, res, next) => {
+    let currentUser = req.locals.currentUser;
+    if (currentUser) {
+      let mappedCourses = res.locals.courses.map((course) => {
+        let userJoined = currentUser.courses.some((userCourse) => {
+          return userCourse.equals(course._id);
+        });
+        return Object.assign(course.toObject(), { joined: userJoined });
+      });
+      res.locals.courses = mappedCourses;
+      next();
+    } else {
+      next();
+    }
+  },
+
   new: (req, res) => {
     res.render("courses/new");
   },
