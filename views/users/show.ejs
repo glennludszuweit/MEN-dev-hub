@@ -38,6 +38,13 @@
       <% user.courses.forEach(course => { %>
       <div class="col-lg-4 mb-3">
         <div class="card">
+          <% if (loggedIn && currentUser) { %>
+          <a
+            href="<%= `courses/${course._id}/delete?_method=DELETE` %>"
+            onclick="return confirm('Are you sure you want to remove this course?')"
+            ><i class="fa fa-times remove-enrolled_course"></i
+          ></a>
+          <% } %>
           <img
             class="card-img-top"
             src="<%= course.image %> "

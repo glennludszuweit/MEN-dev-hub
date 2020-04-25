@@ -21,5 +21,6 @@ router.delete(
   usersController.delete,
   usersController.redirectView
 );
+router.delete("/courses/:id/delete", usersController.deleteCourse);
 
 module.exports = router;

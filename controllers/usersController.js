@@ -178,4 +178,23 @@ module.exports = {
     res.locals.redirect = "/";
     next();
   },
+
+  deleteCourse: (req, res, next) => {
+    let course = req.params.courses;
+    User.findByIdAndUpdate(
+      course,
+      { $pull: { courses: { _id: req.params.id } } },
+      { safe: true, upsert: true }
+    )
+      .then(() => {
+        req.flash("success", `${course.title} removed!`);
+        res.locals.redirect = "/users/show";
+        next();
+      })
+      .catch((error) => {
+        console.log(`Error removing course by ID: ${error.message}`);
+        res.locals.redirect = "/users/show";
+        next();
+      });
+  },
 };
