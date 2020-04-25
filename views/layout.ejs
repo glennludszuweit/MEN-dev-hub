@@ -61,8 +61,13 @@
             <% } %> <% if (loggedIn) { %>
             <li class="nav-item">
               <a class="nav-link" <a href="<%= `/users/${currentUser._id}` %>"
-                >Profile</a
-              >
+                ><i class="fas fa-user"></i
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" <a href="<%= `/users/${currentUser._id}` %>"
+                ><i class="fas fa-comments pr-3"></i
+              ></a>
             </li>
             <li class="nav-item">
               <a class="btn btn-secondary" href="/users/logout"
