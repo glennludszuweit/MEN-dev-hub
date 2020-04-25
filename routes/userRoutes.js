@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const usersController = require("../controllers/usersController");
+const coursesController = require("../controllers/coursesController");
 
 router.get("/", usersController.index, usersController.indexView);
 router.get("/new", usersController.new);

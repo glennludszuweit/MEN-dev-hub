@@ -1,5 +1,6 @@
 "use strict";
 
+const Course = require("../models/course");
 const User = require("../models/user");
 const passport = require("passport");
 
@@ -63,6 +64,8 @@ module.exports = {
   show: (req, res, next) => {
     let userId = req.params.id;
     User.findById(userId)
+      .populate("courses")
+      .exec()
       .then((user) => {
         res.locals.user = user;
         next();

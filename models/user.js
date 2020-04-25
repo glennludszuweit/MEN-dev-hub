@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const mongooseTypePhone = require("mongoose-type-phone");
 const { Schema } = require("mongoose");
 const Subscriber = require("./subscriber");
+const Course = require("./course");
 const bcrypt = require("bcrypt");
 const passportLocalMongoose = require("passport-local-mongoose");
 
@@ -46,7 +47,7 @@ var userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    courses: [{ type: Schema.Types.ObjectId, ref: "Course" }],
+    courses: [{ type: Schema.Types.ObjectId, ref: "Course", required: true }],
     subscribedAccount: { type: Schema.Types.ObjectId, ref: "Subscriber" },
   },
   {
