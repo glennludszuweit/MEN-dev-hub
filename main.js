@@ -89,4 +89,7 @@ app.post("/send", (req, res) => {
 const server = app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost:${app.get("port")}`);
 });
+
+//CHAT
 const io = require("socket.io")(server);
+require("./controllers/chatController")(io);
