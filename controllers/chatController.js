@@ -1,8 +1,10 @@
+"use strict";
+
 module.exports = (io) => {
-  io.on("connect", (client) => {
-    console.log("User connected");
+  io.on("connection", (client) => {
+    console.log("new connection");
     client.on("disconnect", () => {
-      console.log("User disconnected");
+      console.log("user disconnected");
     });
     client.on("message", () => {
       io.emit("message", {
