@@ -6,9 +6,9 @@ module.exports = (io) => {
     client.on("disconnect", () => {
       console.log("user disconnected");
     });
-    client.on("message", () => {
+    client.on("message", (data) => {
       io.emit("message", {
-        content: "Hello",
+        content: data.content,
       });
     });
   });

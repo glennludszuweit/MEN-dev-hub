@@ -2,7 +2,7 @@ $(document).ready(() => {
   //////////Chat with Socket.io//////////
   var socket = io();
   $("#chatForm").submit(() => {
-    let text = $("#chat-input").val("");
+    let text = $("#chat-input").val();
     socket.emit("message", {
       content: text,
     });
