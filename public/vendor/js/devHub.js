@@ -111,9 +111,7 @@ $(document).ready(() => {
                       }" alt="Course Image" />
                     </div>
                     <div class="col-lg-8 mt-2">
-                      <h3><a href="/courses/${course._id}">${
-            course.title
-          }</a></h3>
+                      <h3>${course.title}</h3>
                       <p>${course.description}</p>
                       <button class="btn btn-sm join-btn ${
                         course.joined ? "btn-secondary" : "btn-primary"
@@ -150,9 +148,7 @@ $(document).ready(() => {
                       course.image
                     }" alt="Card image cap" />
                     <div class="card-body">
-                    <h5 class="card-title"><a href="/courses/${course._id}">${
-            course.title
-          }</a></h5>
+                    <h5 class="card-title">${course.title}</h5>
                     <p class="card-text">${course.description}</p>
                     </div>
                     <div class="card-body">
@@ -178,6 +174,7 @@ let addJoinListener = () => {
   $(".join-btn").click((event) => {
     let $button = $(event.target);
     let courseId = $button.data("id");
+    location.reload();
     $.get(`/api/courses/${courseId}/join`, (results = {}) => {
       let data = results.data;
       if (data && data.success) {

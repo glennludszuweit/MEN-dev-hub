@@ -169,11 +169,13 @@ module.exports = {
           courses: courseId,
         },
       })
-        .then(() => {
+        .then((course) => {
+          req.flash("success", "Proceed to you profile to check courses!");
           res.locals.success = true;
           next();
         })
         .catch((error) => {
+          req.flash("danger", "Please Login to Join!");
           next(error);
         });
     } else {
