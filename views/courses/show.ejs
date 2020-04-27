@@ -71,12 +71,11 @@
   <% } else { %>
   <div class="col-md-4 mb-3">
     <div>
-      <button
-        class="btn w-100 join-btn <%= course.joined ? "btn-secondary" : "btn-primary" %> "
-        data-id="<%= course._id %> "
-      >
-        <%= course.join ? "Joined" : "Join" %> 
-      </button>
+      <a
+        href="<%= `/users/${currentUser._id}` %>"
+        class="btn w-100 btn-secondary"
+        >Profile
+      </a>
     </div>
   </div>
   <% } %>
