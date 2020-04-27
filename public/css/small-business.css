@@ -1,36 +1,16 @@
-/*!
- * Start Bootstrap - Small Business (https://startbootstrap.com/template-overviews/small-business)
- * Copyright 2013-2019 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-small-business/blob/master/LICENSE)
- */
-/* * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-} */
-
-/* footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-} */
 html {
   position: relative;
   min-height: 100%;
 }
 body {
-  /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
   height: 60px;
-  line-height: 60px; /* Vertically center the text there */
-  /* background-color: #f5f5f5; */
+  line-height: 60px;
 }
 
 .remove-enrolled_course {
@@ -38,6 +18,31 @@ body {
   right: 0;
   padding: 8px;
   color: #fff;
+}
+
+/* Image upload */
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+#img-upload {
+  width: 100%;
 }
 
 /* Chat */
