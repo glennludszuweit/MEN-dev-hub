@@ -1,7 +1,9 @@
+"use strict";
+
 const mongoose = require("mongoose");
 const { Schema } = require("mongoose");
 
-const chatSchema = new Schema(
+const messageSchema = new Schema(
   {
     content: {
       type: String,
@@ -19,5 +21,4 @@ const chatSchema = new Schema(
   },
   { timestamps: true }
 );
-
-module.exports = mongoose.model("Chat", chatSchema);
+module.exports = mongoose.model("Message", messageSchema);
