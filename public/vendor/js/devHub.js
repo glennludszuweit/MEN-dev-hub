@@ -14,6 +14,13 @@ $(document).ready(() => {
     return false;
   });
 
+  socket.on("message", (message) => {
+    displayMessage(message);
+    for (let i = 0; i < 5; i++) {
+      $(".chat-icon").fadeOut(500).fadeIn(500);
+    }
+  });
+
   socket.on("load all messages", (data) => {
     data.forEach((message) => {
       displayMessage(message);
@@ -21,10 +28,11 @@ $(document).ready(() => {
   });
 
   socket.on("user disconnected", () => {
-    displayMessage({
-      userName: "Notice",
-      content: "User left the chat",
-    });
+    console.log("User left.");
+    // displayMessage({
+    //   userName: "Notice",
+    //   content: "User left the chat",
+    // });
   });
 
   let displayMessage = (message) => {
