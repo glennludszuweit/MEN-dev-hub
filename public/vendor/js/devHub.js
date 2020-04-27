@@ -3,15 +3,21 @@ $(document).ready(() => {
   var socket = io();
   $("#chatForm").submit(() => {
     let text = $("#chat-input").val();
+    let userName = $("#chat-userName").val();
+    let userId = $("#chat-userId").val();
     socket.emit("message", {
       content: text,
+      userName: userName,
+      userId: userId,
     });
     $("#chat-input").val("");
     return false;
   });
+
   socket.on("message", (message) => {
     displayMessage(message.content);
   });
+
   let displayMessage = (message) => {
     $("#chat").prepend($("<p>").html(message));
   };

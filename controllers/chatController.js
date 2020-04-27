@@ -7,9 +7,12 @@ module.exports = (io) => {
       console.log("user disconnected");
     });
     client.on("message", (data) => {
-      io.emit("message", {
+      let messageAttributes = {
         content: data.content,
-      });
+        userName: data.userName,
+        userId: data.userId,
+      };
+      io.emit("message", messageAttributes);
     });
   });
 };

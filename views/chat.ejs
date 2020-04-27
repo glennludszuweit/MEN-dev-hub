@@ -70,6 +70,7 @@
 
         <!-- Typing area -->
         <div class="py-3"></div>
+        <% if (currentUser) { %>
         <form
           action=""
           class="bg-light position-absolute fixed-bottom"
@@ -83,6 +84,16 @@
               aria-describedby="button-addon2"
               class="form-control rounded-0 border-0 py-4 bg-light"
             />
+            <input
+              id="chat-userName"
+              type="hidden"
+              value="<%= currentUser.fullName %>"
+            />
+            <input
+              id="chat-userId"
+              type="hidden"
+              value="<%= currentUser._id %>"
+            />
             <div class="input-group-append">
               <button id="button-addon2" type="submit" class="btn btn-link">
                 <i class="fa fa-paper-plane"></i>
@@ -90,6 +101,7 @@
             </div>
           </div>
         </form>
+        <% } %>
       </div>
     </div>
   </div>
