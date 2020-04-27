@@ -97,11 +97,12 @@ $(document).ready(() => {
   //////////COURSES INDEX//////////
   $("#coursesIndex").html("");
   $.get("/api/courses", (results = {}) => {
-    let data = results.data;
-    if (!data || !data.courses) return;
-    data.courses.forEach((course) => {
-      $("#coursesIndex").append(
-        `
+    let c = results.data;
+    // c.courses.length = 3;
+    if (c.courses.length > 0) {
+      c.courses.forEach((course) => {
+        $("#coursesIndex").append(
+          `
                   <hr />
                   <div class="row mb-3 mt-3">
                     <div class="col-lg-3">
@@ -111,14 +112,14 @@ $(document).ready(() => {
                     </div>
                     <div class="col-lg-8 mt-2">
                       <h3><a href="/courses/${course._id}">${
-          course.title
-        }</a></h3>
+            course.title
+          }</a></h3>
                       <p>${course.description}</p>
                       <button class="btn btn-sm join-btn ${
                         course.joined ? "btn-secondary" : "btn-primary"
                       }" data-id="${course._id}" style="color: #fff;">${
-          course.join ? "Joined" : "Join"
-        }</button>
+            !course.joined ? "Join" : "Joined"
+          }</button>
                     </div>
                     <div class="col-lg-1 mt-2">
                       <h4>
@@ -127,19 +128,20 @@ $(document).ready(() => {
                     </div>
                   </div>
           `
-      );
-    });
+        );
+      });
+    }
   }).then(() => {
     addJoinListener();
   });
 
   //////////LATEST COURSES//////////
   $("#latestCourses").html("");
-  $.get("/courses?format=json", (data) => {
-    let c = data;
-    c.length = 3;
-    if (c.length > 0) {
-      c.forEach((course) => {
+  $.get("/api/courses", (results = {}) => {
+    let c = results.data;
+    c.courses.length = 3;
+    if (c.courses.length > 0) {
+      c.courses.forEach((course) => {
         $("#latestCourses").append(
           `
                 <div class="col-lg-4 mb-3">
@@ -157,7 +159,7 @@ $(document).ready(() => {
                       <button class="btn btn-block join-btn ${
                         course.joined ? "btn-secondary" : "btn-primary"
                       }" data-id="${course._id}" style="color: #fff;">${
-            course.join ? "Joined" : "Join"
+            course.joined ? "Joined" : "Join"
           }</button>
                     </div>
                   </div>
