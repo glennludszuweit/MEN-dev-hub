@@ -10,7 +10,7 @@ module.exports = (io) => {
       let messageAttributes = {
         content: data.content,
         userName: data.userName,
-        userId: data.userId,
+        user: data.userId,
       };
       io.emit("message", messageAttributes);
     });
