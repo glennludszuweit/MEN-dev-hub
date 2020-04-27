@@ -20,11 +20,18 @@ $(document).ready(() => {
     });
   });
 
+  socket.on("user disconnected", () => {
+    displayMessage({
+      userName: "Notice",
+      content: "User left the chat",
+    });
+  });
+
   let displayMessage = (message) => {
     $("#chat").prepend(
       $("<div>").html(
         `<div class="media mb-3">
-            <div class="media-body ml-3">
+            <div class="media-body">
             <div class="small font-weight-bold ${getCurrentUserClass(
               message.user
             )}">
