@@ -20,6 +20,18 @@ body {
   color: #fff;
 }
 
+.nav-link {
+  color: #fff !important;
+}
+
+.nav-link:hover {
+  color: #b6afaf !important;
+}
+
+.active {
+  color: #b6afaf;
+}
+
 /* Image upload */
 .btn-file {
   position: relative;

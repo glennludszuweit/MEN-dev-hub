@@ -22,19 +22,19 @@ $(document).ready(() => {
     $("#chat").prepend(
       $("<div>").html(
         `<div class="media mb-3">
-              <div class="media-body ml-3">
-                <div class="small font-weight-bold ${getCurrentUserClass(
-                  message.user
-                )}">
-                  ${message.userName}
-                </div>
-                <div class="bg-light rounded py-2 px-3">
-                  <p class="text-small mb-0 text-muted">
-                    ${message.content}
-                  </p>
-                </div>
-              </div>
-          </div>`
+            <div class="media-body ml-3">
+            <div class="small font-weight-bold ${getCurrentUserClass(
+              message.user
+            )}">
+              ${message.userName}
+            </div>
+            <div class="bg-light rounded py-2 px-3">
+              <p class="text-small mb-0 text-muted">
+                ${message.content}
+              </p>
+            </div>
+          </div>
+        </div>`
       )
     );
   };
