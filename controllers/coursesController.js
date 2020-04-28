@@ -26,6 +26,7 @@ module.exports = {
         next(error);
       });
   },
+
   indexView: (req, res) => {
     if (req.query.format === "json") {
       res.json(res.locals.courses);
@@ -40,13 +41,6 @@ module.exports = {
 
   create: (req, res, next) => {
     let courseParams = getCourseParams(req.body);
-    // var courseParams = new Course({
-    //   title: req.body.title,
-    //   description: req.body.description,
-    //   zipCode: req.body.zipCode,
-    //   maxStudents: req.body.maxStudents,
-    //   cost: req.body.cost,
-    // });
     if (req.file) {
       courseParams.image = req.file.path;
     }

@@ -95,14 +95,13 @@ $(document).ready(() => {
   });
 
   //////////COURSES INDEX//////////
-  $("#coursesIndex").html("");
+  var courseIndex = $("#coursesIndex").html("");
   $.get("/api/courses", (results = {}) => {
     let c = results.data;
-    // c.courses.length = 3;
-    if (c.courses.length > 0) {
-      c.courses.forEach((course) => {
-        $("#coursesIndex").append(
-          `
+    if (!c || !c.courses) return;
+    c.courses.forEach((course) => {
+      $("#coursesIndex").append(
+        `
                   <hr />
                   <div class="row mb-3 mt-3">
                     <div class="col-lg-4">
@@ -117,16 +116,29 @@ $(document).ready(() => {
                       <button class="btn btn-sm join-btn ${
                         course.joined ? "btn-secondary" : "btn-primary"
                       }" data-id="${course._id}" style="color: #fff;">${
-            !course.joined ? "Join" : "Joined"
-          }</button>
+          !course.joined ? "Join" : "Joined"
+        }</button>
                     </div>
                   </div>
           `
-        );
-      });
-    }
+      );
+    });
   }).then(() => {
     addJoinListener();
+  });
+
+  //////////SEARCH COURSE//////////
+  var $searchResult = courseIndex;
+  $("#search").keyup(function () {
+    var val = $.trim($(this).val()).replace(/ +/g, " ").toLowerCase();
+
+    $searchResult
+      .show()
+      .filter(function () {
+        var text = $(this).text().replace(/\s+/g, " ").toLowerCase();
+        return !~text.indexOf(val);
+      })
+      .hide();
   });
 
   //////////LATEST COURSES//////////
