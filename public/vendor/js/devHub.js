@@ -105,7 +105,7 @@ $(document).ready(() => {
           `
                   <hr />
                   <div class="row mb-3 mt-3">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                       <img class="img-thumbnail" src="${
                         course.image
                       }" alt="Course Image" />
@@ -113,16 +113,12 @@ $(document).ready(() => {
                     <div class="col-lg-8 mt-2">
                       <h3>${course.title}</h3>
                       <p>${course.description}</p>
+                      <p>${course.author}</p>
                       <button class="btn btn-sm join-btn ${
                         course.joined ? "btn-secondary" : "btn-primary"
                       }" data-id="${course._id}" style="color: #fff;">${
             !course.joined ? "Join" : "Joined"
           }</button>
-                    </div>
-                    <div class="col-lg-1 mt-2">
-                      <h4>
-                        $ ${course.cost}<span>
-                      </h4>
                     </div>
                   </div>
           `
@@ -147,9 +143,12 @@ $(document).ready(() => {
                     <img class="card-img-top" src="${
                       course.image
                     }" alt="Card image cap" />
-                    <div class="card-body">
+                    <div class="card-body" style="max-height: 150px;">
                     <h5 class="card-title">${course.title}</h5>
-                    <p class="card-text">${course.description}</p>
+                    <p class="card-text">${course.description.slice(
+                      0,
+                      100
+                    )} ...</p>
                     </div>
                     <div class="card-body">
                       <button class="btn btn-block join-btn ${

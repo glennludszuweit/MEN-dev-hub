@@ -33,32 +33,19 @@
         />
         <input
           type="text"
+          name="author"
+          id="inputAuthor"
+          class="form-control my-3"
+          value="<%= course.author %>"
+          placeholder="Description"
+        />
+        <input
+          type="text"
           name="zipCode"
-          id="inputZipCode"
-          pattern="[0-9]{5}"
+          id="inputEmbedUrl"
           class="form-control my-3"
-          value="<%= course.zipCode %>"
-          placeholder="Zip Code"
-          required
-        />
-        <input
-          type="text"
-          name="maxStudents"
-          id="inputMaxStudents"
-          pattern="\d*"
-          class="form-control my-3"
-          value="<%= course.maxStudents %>"
-          placeholder="Max Students"
-          required
-        />
-        <input
-          type="text"
-          name="cost"
-          id="inputCost"
-          pattern="\d*"
-          class="form-control my-3"
-          value="<%= course.cost %>"
-          placeholder="Cost"
+          value="<%= course.embedUrl %>"
+          placeholder="Youtube Embed URL"
           required
         />
         <button class="btn btn-lg btn-primary btn-block" type="submit">

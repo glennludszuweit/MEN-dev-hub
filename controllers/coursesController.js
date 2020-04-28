@@ -8,9 +8,8 @@ const getCourseParams = (body) => {
   return {
     title: body.title,
     description: body.description,
-    zipCode: body.zipCode,
-    maxStudents: body.maxStudents,
-    cost: body.cost,
+    author: body.author,
+    embedUrl: body.embedUrl,
   };
 };
 
@@ -40,14 +39,14 @@ module.exports = {
   },
 
   create: (req, res, next) => {
-    // let courseParams = getCourseParams(req.body);
-    var courseParams = new Course({
-      title: req.body.title,
-      description: req.body.description,
-      zipCode: req.body.zipCode,
-      maxStudents: req.body.maxStudents,
-      cost: req.body.cost,
-    });
+    let courseParams = getCourseParams(req.body);
+    // var courseParams = new Course({
+    //   title: req.body.title,
+    //   description: req.body.description,
+    //   zipCode: req.body.zipCode,
+    //   maxStudents: req.body.maxStudents,
+    //   cost: req.body.cost,
+    // });
     if (req.file) {
       courseParams.image = req.file.path;
     }

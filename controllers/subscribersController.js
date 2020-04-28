@@ -85,11 +85,11 @@ module.exports = {
       .sendMail(mailOptions)
       .then(() => {
         req.flash("success", `Message Sent!`);
-        res.locals.redirect = "/subscribers/new";
+        res.locals.redirect = "/contact";
         next();
       })
       .catch((error) => {
-        res.locals.redirect = "/subscribers/new";
+        res.locals.redirect = "/contact";
         req.flash("error", `Falied: ${error.message}`);
         next();
       });

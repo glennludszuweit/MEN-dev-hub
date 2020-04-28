@@ -12,23 +12,15 @@ var courseSchema = new Schema(
       type: String,
       required: true,
     },
-    zipCode: {
-      type: Number,
-      min: [1000, "Zip code too short"],
-      max: 99999,
+    author: {
+      type: String,
+      required: true,
     },
-    maxStudents: {
-      type: Number,
-      default: 0,
-      min: [0, "Course cannot have a negative number of students"],
-    },
-    cost: {
-      type: Number,
-      default: 0,
-      min: [0, "Course cannot have a negative cost"],
+    embedUrl: {
+      type: String,
+      required: true,
     },
     image: {
-      // data: Buffer,
       type: String,
     },
   },
