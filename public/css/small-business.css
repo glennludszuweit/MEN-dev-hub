@@ -108,3 +108,9 @@ input::placeholder {
   top: 0;
   width: 100%;
 }
+
+/* Navigation */
+.px-10 {
+  padding-left: 100px;
+  padding-right: 100px;
+}

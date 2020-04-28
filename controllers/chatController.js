@@ -8,7 +8,7 @@ module.exports = (io) => {
 
     Message.find({})
       .sort({ createdAt: -1 })
-      .limit(10)
+      .limit(50)
       .then((messages) => {
         client.emit("load all messages", messages.reverse());
       });
