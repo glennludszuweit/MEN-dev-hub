@@ -95,51 +95,64 @@ $(document).ready(() => {
   });
 
   //////////COURSES INDEX//////////
-  var courseIndex = $("#coursesIndex").html("");
+  $("#coursesIndex").html("");
   $.get("/api/courses", (results = {}) => {
     let c = results.data;
-    if (!c || !c.courses) return;
-    c.courses.forEach((course) => {
-      $("#coursesIndex").append(
-        `
+    if (c.courses.length > 0) {
+      c.courses.forEach((course) => {
+        $("#coursesIndex").append(
+          `
+                <div>
                   <hr />
-                  <div class="row mb-3 mt-3">
+                  <div class="course-gallery row mb-3 mt-3">
                     <div class="col-lg-4">
                       <img class="img-thumbnail" src="${
                         course.image
                       }" alt="Course Image" />
                     </div>
                     <div class="col-lg-8 mt-2">
-                      <h3>${course.title}</h3>
+                      <h3 class="course-title"><a href="#">${
+                        course.title
+                      }</a></h3>
                       <p>${course.description}</p>
                       <p>${course.author}</p>
                       <button class="btn btn-sm join-btn ${
                         course.joined ? "btn-secondary" : "btn-primary"
                       }" data-id="${course._id}" style="color: #fff;">${
-          !course.joined ? "Join" : "Joined"
-        }</button>
+            !course.joined ? "Join" : "Joined"
+          }</button>
                     </div>
                   </div>
+                  </div>
           `
-      );
-    });
+        );
+      });
+    }
   }).then(() => {
     addJoinListener();
   });
 
   //////////SEARCH COURSE//////////
-  var $searchResult = courseIndex;
-  $("#search").keyup(function () {
-    var val = $.trim($(this).val()).replace(/ +/g, " ").toLowerCase();
+  let search = document.getElementById("search");
+  search.addEventListener("keyup", filterResults);
+  function filterResults() {
+    let searchValue = document.getElementById("search").value.toUpperCase();
+    let courses = document.getElementById("coursesIndex");
+    let courseTitle = courses.querySelectorAll(".course-title");
 
-    $searchResult
-      .show()
-      .filter(function () {
-        var text = $(this).text().replace(/\s+/g, " ").toLowerCase();
-        return !~text.indexOf(val);
-      })
-      .hide();
-  });
+    for (let i = 0; i < courseTitle.length; i++) {
+      let a = courseTitle[i].getElementsByTagName("a")[0];
+      if (a.innerHTML.toUpperCase().indexOf(searchValue) > -1) {
+        courseTitle[i].style.display = "block";
+      } else {
+        courseTitle[i].parentElement.parentElement.parentElement.style.display =
+          "none";
+        document.getElementById(
+          "formCol"
+        ).innerHTML = `<p><a href="/courses">Back to courses</a></p>`;
+      }
+    }
+  }
 
   //////////LATEST COURSES//////////
   $("#latestCourses").html("");
