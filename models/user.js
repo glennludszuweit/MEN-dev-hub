@@ -2,8 +2,6 @@ const mongoose = require("mongoose");
 const mongooseTypePhone = require("mongoose-type-phone");
 const { Schema } = require("mongoose");
 const Subscriber = require("./subscriber");
-const Course = require("./course");
-const bcrypt = require("bcrypt");
 const passportLocalMongoose = require("passport-local-mongoose");
 
 var userSchema = new mongoose.Schema(

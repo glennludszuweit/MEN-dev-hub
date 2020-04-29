@@ -8,7 +8,6 @@ const getSubscriberParams = (body) => {
     name: body.name,
     email: body.email,
     mobileNum: body.mobileNum,
-    zipCode: parseInt(body.zipCode),
   };
 };
 

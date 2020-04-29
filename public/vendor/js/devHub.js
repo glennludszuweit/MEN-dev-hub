@@ -111,7 +111,7 @@ $(document).ready(() => {
                       }" alt="Course Image" />
                     </div>
                     <div class="col-lg-8 mt-2">
-                      <h3 class="course-title">${course.title}</h3>
+                      <h3 class="course-title"><a>${course.title}</a></h3>
                       <p>${course.description}</p>
                       <p>${course.author}</p>
                       <button class="btn btn-sm join-btn ${

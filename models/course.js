@@ -29,6 +29,4 @@ var courseSchema = new Schema(
   }
 );
 
-courseSchema.index({ name: "text", description: "text", author: "text" });
-
 module.exports = mongoose.model("Course", courseSchema);

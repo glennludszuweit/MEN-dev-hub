@@ -1,6 +1,5 @@
 "use strict";
 
-const Course = require("../models/course");
 const User = require("../models/user");
 const passport = require("passport");
 
@@ -146,15 +145,6 @@ module.exports = {
 
   validate: (req, res, next) => {
     req.check("email", "Email is invalid.").isEmail().notEmpty();
-    req
-      .check("zipCode", "Zip code is invalid.")
-      .notEmpty()
-      .isInt()
-      .isLength({
-        min: 5,
-        max: 5,
-      })
-      .equals(req.body.zipCode);
     req
       .check("password", "Password must be atleast 6 characters.")
       .notEmpty()
