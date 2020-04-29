@@ -10,7 +10,8 @@
   "author": "Glenn Ludszuweit",
   "license": "ISC",
   "engines": {
-    "node": "12.16.1"
+    "node": "12.16.x",
+    "npm": "6.x"
   },
   "dependencies": {
     "bcrypt": "^3.0.0",
