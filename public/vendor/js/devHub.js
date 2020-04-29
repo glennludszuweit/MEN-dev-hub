@@ -226,11 +226,11 @@ let addJoinListener = () => {
 //     map: map,
 //   });
 
-  // var infoWindow = new google.maps.InfoWindow({
-  //   content: `<h4>gngLAB GmbH</h4>`,
-  // });
+// var infoWindow = new google.maps.InfoWindow({
+//   content: `<h4>gngLAB GmbH</h4>`,
+// });
 
-  // marker.addListener("click", function () {
-  //   infoWindow.open(map, marker);
-  // });
-}
+// marker.addListener("click", function () {
+//   infoWindow.open(map, marker);
+// });
+// }
