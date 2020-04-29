@@ -9,6 +9,9 @@
   },
   "author": "Glenn Ludszuweit",
   "license": "ISC",
+  "engines": {
+    "node": "12.16.1"
+  },
   "dependencies": {
     "bcrypt": "^3.0.0",
     "connect-flash": "^0.1.1",
