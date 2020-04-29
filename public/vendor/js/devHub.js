@@ -174,7 +174,7 @@ let addJoinListener = () => {
   $(".join-btn").click((event) => {
     let $button = $(event.target);
     let courseId = $button.data("id");
-    location.reload();
+    // location.reload();
     $.get(`/api/courses/${courseId}/join`, (results = {}) => {
       let data = results.data;
       if (data && data.success) {
