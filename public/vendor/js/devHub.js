@@ -143,13 +143,11 @@ $(document).ready(() => {
     for (let i = 0; i < courseTitle.length; i++) {
       let a = courseTitle[i].getElementsByTagName("a")[0];
       if (a.innerHTML.toUpperCase().indexOf(searchValue) > -1) {
-        courseTitle[i].style.display = "block";
+        courseTitle[i].parentElement.parentElement.parentElement.style.display =
+          "";
       } else {
         courseTitle[i].parentElement.parentElement.parentElement.style.display =
           "none";
-        document.getElementById(
-          "formCol"
-        ).innerHTML = `<p><a href="/courses">Back to courses</a></p>`;
       }
     }
   }
