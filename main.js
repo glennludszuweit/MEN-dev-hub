@@ -24,6 +24,19 @@ mongoose.connect(
 );
 mongoose.set("useCreateIndex", true);
 
+//Server
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 4000;
+}
+const server = app.listen(port, () => {
+  console.log("Server running");
+});
+
+//CHAT
+const io = require("socket.io")(server);
+require("./controllers/chatController")(io);
+
 //Project Environment
 app.set("view engine", "ejs");
 
@@ -60,19 +73,6 @@ app.use(
     },
   })
 );
-
-//Server
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 4000;
-}
-const server = app.listen(port, () => {
-  console.log("Server running");
-});
-
-//CHAT
-const io = require("socket.io")(server);
-require("./controllers/chatController")(io);
 
 //Passport
 app.use(passport.initialize());
