@@ -9,6 +9,9 @@
   },
   "author": "Glenn Ludszuweit",
   "license": "ISC",
+  "engines": {
+    "node": "12.16.x"
+  },
   "dependencies": {
     "aws-sdk": "^2.665.0",
     "bcrypt": "^3.0.0",

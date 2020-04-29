@@ -26,7 +26,6 @@ mongoose.connect(
 mongoose.set("useCreateIndex", true);
 
 //Project Environment
-app.set("port", process.env.PORT || 4000);
 app.set("view engine", "ejs");
 
 app.use("/courses/uploads", express.static("uploads"));
@@ -90,8 +89,12 @@ app.post("/send", (req, res) => {
 });
 
 //Server
-const server = app.listen(app.get("port"), () => {
-  console.log(`Server running at http://localhost:${app.get("port")}`);
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 4000;
+}
+const server = app.listen(port, () => {
+  console.log("Server running");
 });
 
 //CHAT
