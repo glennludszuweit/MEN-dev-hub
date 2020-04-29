@@ -61,6 +61,19 @@ app.use(
   })
 );
 
+//Server
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 4000;
+}
+const server = app.listen(port, () => {
+  console.log("Server running");
+});
+
+//CHAT
+const io = require("socket.io")(server);
+require("./controllers/chatController")(io);
+
 //Passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -86,16 +99,3 @@ app.use("/", router);
 app.post("/send", (req, res) => {
   console.log(req.body);
 });
-
-//Server
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 4000;
-}
-const server = app.listen(port, () => {
-  console.log("Server running");
-});
-
-//CHAT
-const io = require("socket.io")(server);
-require("./controllers/chatController")(io);

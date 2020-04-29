@@ -193,44 +193,44 @@ let addJoinListener = () => {
 };
 
 //////////SEARCH COURSE//////////
-// let search = document.getElementById("search");
-// search.addEventListener("keyup", filterResults);
-// function filterResults() {
-//   let searchValue = document.getElementById("search").value.toUpperCase();
-//   let courses = document.getElementById("coursesIndex");
-//   let courseTitle = courses.querySelectorAll(".course-title");
+let search = document.getElementById("search");
+search.addEventListener("keyup", filterResults);
+function filterResults() {
+  let searchValue = document.getElementById("search").value.toUpperCase();
+  let courses = document.getElementById("coursesIndex");
+  let courseTitle = courses.querySelectorAll(".course-title");
 
-//   for (let i = 0; i < courseTitle.length; i++) {
-//     let a = courseTitle[i].getElementsByTagName("a")[0];
-//     if (a.innerHTML.toUpperCase().indexOf(searchValue) > -1) {
-//       courseTitle[i].parentElement.parentElement.parentElement.style.display =
-//         "";
-//     } else {
-//       courseTitle[i].parentElement.parentElement.parentElement.style.display =
-//         "none";
-//     }
-//   }
-// }
+  for (let i = 0; i < courseTitle.length; i++) {
+    let a = courseTitle[i].getElementsByTagName("a")[0];
+    if (a.innerHTML.toUpperCase().indexOf(searchValue) > -1) {
+      courseTitle[i].parentElement.parentElement.parentElement.style.display =
+        "";
+    } else {
+      courseTitle[i].parentElement.parentElement.parentElement.style.display =
+        "none";
+    }
+  }
+}
 
 //////////Google MAPS//////////
-// function initMap() {
-//   var options = {
-//     center: { lat: 51.2277, lng: 6.7735 },
-//     zoom: 10,
-//   };
+function initMap() {
+  var options = {
+    center: { lat: 51.2277, lng: 6.7735 },
+    zoom: 10,
+  };
 
-//   var map = new google.maps.Map(document.getElementById("map"), options);
+  var map = new google.maps.Map(document.getElementById("map"), options);
 
-//   var marker = new google.maps.Marker({
-//     position: { lat: 51.29409, lng: 6.81929 },
-//     map: map,
-//   });
+  var marker = new google.maps.Marker({
+    position: { lat: 51.29409, lng: 6.81929 },
+    map: map,
+  });
 
-// var infoWindow = new google.maps.InfoWindow({
-//   content: `<h4>gngLAB GmbH</h4>`,
-// });
+  // var infoWindow = new google.maps.InfoWindow({
+  //   content: `<h4>gngLAB GmbH</h4>`,
+  // });
 
-// marker.addListener("click", function () {
-//   infoWindow.open(map, marker);
-// });
-// }
+  // marker.addListener("click", function () {
+  //   infoWindow.open(map, marker);
+  // });
+}
