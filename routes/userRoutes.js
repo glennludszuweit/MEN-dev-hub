@@ -21,12 +21,6 @@ router.delete(
   usersController.delete,
   usersController.redirectView
 );
-router.put("/removeCourse", (req, res) => {
-  User.findByIdAndUpdate(
-    { _id: req.params.id },
-    { $pull: { courses: { _id: req.params.id } } }
-  );
-  res.end();
-});
+// router.delete("/:id/deleteCourse");
 
 module.exports = router;

@@ -67,15 +67,15 @@ module.exports = {
     let transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 587,
-      secure: false, // true for 465, false for other ports
+      secure: false,
       auth: {
-        user: "info@glennludszuweit.de", // generated ethereal user
-        pass: "Killdsug@r666", // generated ethereal password
+        user: "gnglab.dev@gmail.com", // generated ethereal user
+        pass: "admin1-2-3", // generated ethereal password
       },
     });
 
     let mailOptions = {
-      from: '"DevHub" <info@gnglab.de>', // sender address
+      from: '"DevHub" <gnglab.dev@gmail.com>', // sender address
       to: "glenn.ludszuweit@gmail.com", // list of receivers
       subject: `DevHub Message from ${req.body.email}`, // Subject line
       text: "", // plain text body

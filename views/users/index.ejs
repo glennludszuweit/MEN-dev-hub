@@ -32,9 +32,6 @@
         <td>
           <%= user.mobileNum %>
         </td>
-        <td>
-          <%= user.zipCode %>
-        </td>
         <% if (loggedIn && currentUser.isAdmin) { %>
         <td>
           <a href="<%=`/users/${user._id}/edit`%>">

@@ -111,9 +111,7 @@ $(document).ready(() => {
                       }" alt="Course Image" />
                     </div>
                     <div class="col-lg-8 mt-2">
-                      <h3 class="course-title"><a href="#">${
-                        course.title
-                      }</a></h3>
+                      <h3 class="course-title">${course.title}</h3>
                       <p>${course.description}</p>
                       <p>${course.author}</p>
                       <button class="btn btn-sm join-btn ${
@@ -132,31 +130,11 @@ $(document).ready(() => {
     addJoinListener();
   });
 
-  //////////SEARCH COURSE//////////
-  let search = document.getElementById("search");
-  search.addEventListener("keyup", filterResults);
-  function filterResults() {
-    let searchValue = document.getElementById("search").value.toUpperCase();
-    let courses = document.getElementById("coursesIndex");
-    let courseTitle = courses.querySelectorAll(".course-title");
-
-    for (let i = 0; i < courseTitle.length; i++) {
-      let a = courseTitle[i].getElementsByTagName("a")[0];
-      if (a.innerHTML.toUpperCase().indexOf(searchValue) > -1) {
-        courseTitle[i].parentElement.parentElement.parentElement.style.display =
-          "";
-      } else {
-        courseTitle[i].parentElement.parentElement.parentElement.style.display =
-          "none";
-      }
-    }
-  }
-
   //////////LATEST COURSES//////////
   $("#latestCourses").html("");
   $.get("/api/courses", (results = {}) => {
     let c = results.data;
-    c.courses.length = 3;
+    c.courses.length = 6;
     if (c.courses.length > 0) {
       c.courses.forEach((course) => {
         $("#latestCourses").append(
@@ -191,7 +169,7 @@ $(document).ready(() => {
   });
 });
 
-//////////BUTTON LISTENER/////////
+//////////COURSE JOIN BUTTON/////////
 let addJoinListener = () => {
   $(".join-btn").click((event) => {
     let $button = $(event.target);
@@ -213,6 +191,26 @@ let addJoinListener = () => {
     });
   });
 };
+
+//////////SEARCH COURSE//////////
+let search = document.getElementById("search");
+search.addEventListener("keyup", filterResults);
+function filterResults() {
+  let searchValue = document.getElementById("search").value.toUpperCase();
+  let courses = document.getElementById("coursesIndex");
+  let courseTitle = courses.querySelectorAll(".course-title");
+
+  for (let i = 0; i < courseTitle.length; i++) {
+    let a = courseTitle[i].getElementsByTagName("a")[0];
+    if (a.innerHTML.toUpperCase().indexOf(searchValue) > -1) {
+      courseTitle[i].parentElement.parentElement.parentElement.style.display =
+        "";
+    } else {
+      courseTitle[i].parentElement.parentElement.parentElement.style.display =
+        "none";
+    }
+  }
+}
 
 //////////Google MAPS//////////
 function initMap() {

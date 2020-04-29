@@ -34,11 +34,6 @@ var userSchema = new mongoose.Schema(
       defaultRegion: "DE",
       parseOnGet: false,
     },
-    zipCode: {
-      type: Number,
-      min: [1000, "Zip code too short"],
-      max: 99999,
-    },
     password: {
       type: String,
       required: true,

@@ -16,9 +16,12 @@ const User = require("./models/user");
 const app = express();
 
 //Database
-mongoose.connect("mongodb://localhost:27017/kitchenhub", {
-  useNewUrlParser: true,
-});
+mongoose.connect(
+  process.env.MONGO_URI || "mongodb://localhost:27017/kitchenhub",
+  {
+    useNewUrlParser: true,
+  }
+);
 mongoose.set("useCreateIndex", true);
 
 //Project Environment
