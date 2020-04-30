@@ -17,10 +17,10 @@ const app = express();
 
 mongoose.connect(
   process.env.MONGO_URI ||
-    "mongodb+srv://devhub:admin123@node-devhub-mwfvv.mongodb.net/test?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-  }
+    "mongodb+srv://devhub:admin123@node-devhub-mwfvv.mongodb.net/test?retryWrites=true&w=majority"
+  // {
+  //   useNewUrlParser: true,
+  // }
 );
 // mongoose.set("useCreateIndex", true);
 
