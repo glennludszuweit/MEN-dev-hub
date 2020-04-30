@@ -18,10 +18,10 @@ const app = express();
 mongoose.Promise = global.Promise;
 mongoose.connect(
   process.env.MONGO_URI ||
-    "mongodb+srv://devhub:admin123@node-devhub-mwfvv.mongodb.net/test?retryWrites=true&w=majority",
+    "mongodb+srv://devhub:admin123@node-devhub-mwfvv.mongodb.net/test?retryWrites=true&w=majority" ||
+    "mongodb://localhost:27017/kitchenhub",
   {
     useNewUrlParser: true,
-    useFindAndModify: false,
   }
 );
 mongoose.set("useCreateIndex", true);
