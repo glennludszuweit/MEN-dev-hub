@@ -15,6 +15,7 @@ const User = require("./models/user");
 
 const app = express();
 
+mongoose.Promise = global.Promise;
 mongoose.connect(
   process.env.MONGO_URI ||
     "mongodb+srv://devhub:admin123@node-devhub-mwfvv.mongodb.net/test?retryWrites=true&w=majority",
@@ -24,19 +25,11 @@ mongoose.connect(
   }
 );
 mongoose.set("useCreateIndex", true);
-
-//Server
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 4000;
-}
-const server = app.listen(port, () => {
-  console.log("Server running");
+const db = mongoose.connection;
+db.once("open", () => {
+  console.log("Successfully connected to MongoDB using Mongoose!");
 });
-
-//CHAT
-const io = require("socket.io")(server);
-require("./controllers/chatController")(io);
+app.set("port", process.env.PORT || 3000);
 
 //Project Environment
 app.set("view engine", "ejs");
@@ -100,3 +93,10 @@ app.use("/", router);
 app.post("/send", (req, res) => {
   console.log(req.body);
 });
+
+//Chat
+const server = app.listen(app.get("port"), () => {
+    console.log(`Server running at http://localhost:${app.get("port")}`);
+  }),
+  io = require("socket.io")(server);
+require("./controllers/chatController")(io);
