@@ -15,28 +15,14 @@ const User = require("./models/user");
 
 const app = express();
 
-//Database
-// mongoose.connect(
-//   "mongodb+srv://devhub:admin123@node-devhub-mwfvv.mongodb.net/test?retryWrites=true&w=majority",
-//   {
-//     useNewUrlParser: true,
-//   }
-// );
-
 mongoose.connect(
   process.env.MONGO_URI ||
     "mongodb+srv://devhub:admin123@node-devhub-mwfvv.mongodb.net/test?retryWrites=true&w=majority",
-  { useNewUrlParser: true }
+  {
+    useNewUrlParser: true,
+  }
 );
-const conn = mongoose.connection;
-mongoose.connection.once("open", () => {
-  console.log("MongoDB Connected");
-});
-mongoose.connection.on("error", (err) => {
-  console.log("MongoDB connection error: ", err);
-});
-
-mongoose.set("useCreateIndex", true);
+// mongoose.set("useCreateIndex", true);
 
 //Server
 let port = process.env.PORT;
