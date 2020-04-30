@@ -16,8 +16,7 @@ const User = require("./models/user");
 const app = express();
 
 mongoose.connect(
-  process.env.MONGO_URI ||
-    "mongodb+srv://devhub:admin123@devhub-tllgv.mongodb.net/test?retryWrites=true&w=majority",
+  "mongodb+srv://devhub:admin123@devhub-tllgv.mongodb.net/test?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
   }
