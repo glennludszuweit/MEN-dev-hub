@@ -9,7 +9,7 @@ router.get(
 router.get(
   "/courses",
   coursesController.index,
-  coursesController.filterUserCourses,
+  // coursesController.filterUserCourses,
   coursesController.respondJSON
 );
 router.use(coursesController.errorJSON);
