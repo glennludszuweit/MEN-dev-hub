@@ -17,7 +17,7 @@ const app = express();
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
-  "mongodb+srv://devhub:admin123@node-devhub-mwfvv.mongodb.net/test?retryWrites=true&w=majority",
+  process.env.MONGODB_URI || "mongodb://localhost:27017/kitchenhub",
   {
     useNewUrlParser: true,
   }
