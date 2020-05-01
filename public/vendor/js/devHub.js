@@ -130,42 +130,42 @@ $(document).ready(() => {
   });
 
   //////////LATEST COURSES//////////
-  // $("#latestCourses").html("");
-  // $.get("/api/courses", (results = {}) => {
-  //   let c = results.data;
-  //   c.courses.length = 6;
-  //   if (c.courses.length > 0) {
-  //     c.courses.forEach((course) => {
-  //       $("#latestCourses").append(
-  //         `
-  //               <div class="col-lg-4 mb-3">
-  //                 <div class="card">
-  //                   <img class="card-img-top" src="${
-  //                     course.image
-  //                   }" alt="Card image cap" />
-  //                   <div class="card-body" style="max-height: 150px;">
-  //                   <h5 class="card-title">${course.title}</h5>
-  //                   <p class="card-text">${course.description.slice(
-  //                     0,
-  //                     100
-  //                   )} ...</p>
-  //                   </div>
-  //                   <div class="card-body">
-  //                     <button class="btn btn-block join-btn ${
-  //                       course.joined ? "btn-secondary" : "btn-primary"
-  //                     }" data-id="${course._id}" style="color: #fff;">${
-  //           course.joined ? "Joined" : "Join"
-  //         }</button>
-  //                   </div>
-  //                 </div>
-  //               </div>
-  //       `
-  //       );
-  //     });
-  //   }
-  // }).then(() => {
-  //   addJoinListener();
-  // });
+  $("#latestCourses").html("");
+  $.get("/api/courses", (results = {}) => {
+    let c = results.data;
+    c.courses.length = 6;
+    if (c.courses.length > 0) {
+      c.courses.forEach((course) => {
+        $("#latestCourses").append(
+          `
+                <div class="col-lg-4 mb-3">
+                  <div class="card">
+                    <img class="card-img-top" src="${
+                      course.image
+                    }" alt="Card image cap" />
+                    <div class="card-body" style="max-height: 150px;">
+                    <h5 class="card-title">${course.title}</h5>
+                    <p class="card-text">${course.description.slice(
+                      0,
+                      100
+                    )} ...</p>
+                    </div>
+                    <div class="card-body">
+                      <button class="btn btn-block join-btn ${
+                        course.joined ? "btn-secondary" : "btn-primary"
+                      }" data-id="${course._id}" style="color: #fff;">${
+            course.joined ? "Joined" : "Join"
+          }</button>
+                    </div>
+                  </div>
+                </div>
+        `
+        );
+      });
+    }
+  }).then(() => {
+    addJoinListener();
+  });
 });
 
 //////////COURSE JOIN BUTTON/////////
