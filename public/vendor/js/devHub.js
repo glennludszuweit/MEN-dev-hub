@@ -98,10 +98,10 @@ $(document).ready(() => {
   $("#coursesIndex").html("");
   $.get("/api/courses", (results = {}) => {
     let c = results.data;
-    if (!data || !data.courses) return;
-    c.courses.forEach((course) => {
-      $("#coursesIndex").append(
-        `
+    if (c.courses.length > 0) {
+      c.courses.forEach((course) => {
+        $("#coursesIndex").append(
+          `
                 <div>
                   <hr />
                   <div class="course-gallery row mb-3 mt-3">
@@ -117,14 +117,15 @@ $(document).ready(() => {
                       <button class="btn btn-sm join-btn ${
                         course.joined ? "btn-secondary" : "btn-primary"
                       }" data-id="${course._id}" style="color: #fff;">${
-          !course.joined ? "Join" : "Joined"
-        }</button>
+            !course.joined ? "Join" : "Joined"
+          }</button>
                     </div>
                   </div>
                   </div>
           `
-      );
-    });
+        );
+      });
+    }
   }).then(() => {
     addJoinListener();
   });

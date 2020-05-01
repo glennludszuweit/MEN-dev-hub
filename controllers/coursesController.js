@@ -23,7 +23,7 @@ module.exports = {
       })
       .catch((error) => {
         console.log(`Error fetching courses: ${error.message}`);
-        next();
+        next(error);
       });
   },
 
@@ -135,7 +135,7 @@ module.exports = {
       status: httpStatus.OK,
       data: res.locals,
     });
-    return res.end();
+    res.end();
   },
 
   errorJSON: (error, req, res, next) => {
