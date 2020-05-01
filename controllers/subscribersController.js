@@ -1,7 +1,7 @@
 "use strict";
 
 const Subscriber = require("../models/subscriber");
-// const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
 
 const getSubscriberParams = (body) => {
   return {
