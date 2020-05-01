@@ -9,7 +9,6 @@ const connectFlash = require("connect-flash");
 const expressSession = require("express-session");
 const expressValidator = require("express-validator");
 const passport = require("passport");
-const sls = require("serverless-http");
 
 const router = require("./routes/index");
 const User = require("./models/user");
@@ -96,5 +95,3 @@ const server = app.listen(app.get("port"), () => {
   }),
   io = require("socket.io")(server);
 require("./controllers/chatController")(io);
-
-module.exports.server = sls(app);
