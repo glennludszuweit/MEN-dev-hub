@@ -98,7 +98,7 @@ $(document).ready(() => {
   $("#coursesIndex").html("");
   $.get("/api/courses", (results = {}) => {
     let c = results.data;
-    if (!c || !c.courses) return;
+    if (!data || !data.courses) return;
     c.courses.forEach((course) => {
       $("#coursesIndex").append(
         `
