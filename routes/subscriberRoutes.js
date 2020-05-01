@@ -8,11 +8,11 @@ router.post(
   subscribersController.create,
   subscribersController.redirectView
 );
-router.post(
-  "/send",
-  subscribersController.send,
-  subscribersController.redirectView
-);
+// router.post(
+//   "/send",
+//   subscribersController.send,
+//   subscribersController.redirectView
+// );
 router.get("/:id/edit", subscribersController.edit);
 router.put(
   "/:id/update",
