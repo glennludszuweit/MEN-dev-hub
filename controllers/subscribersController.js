@@ -47,52 +47,52 @@ module.exports = {
       });
   },
 
-  // contact: (req, res) => {
-  //   res.render("subscribers/contact");
-  // },
+  contact: (req, res) => {
+    res.render("subscribers/contact");
+  },
 
-  // send: (req, res, next) => {
-  //   const output = `
-  //     <p>You have a new message.</p>
-  //     <h3>Contact Details</h3>
-  //     <ul>
-  //       <li>Name: ${req.body.name}</li>
-  //       <li>Name: ${req.body.email}</li>
-  //     </ul>
-  //     <h3>Message</h3>
-  //     <p>${req.body.contactMsg}</p>
-  //   `;
+  send: (req, res, next) => {
+    const output = `
+      <p>You have a new message.</p>
+      <h3>Contact Details</h3>
+      <ul>
+        <li>Name: ${req.body.name}</li>
+        <li>Name: ${req.body.email}</li>
+      </ul>
+      <h3>Message</h3>
+      <p>${req.body.contactMsg}</p>
+    `;
 
-  //   let transporter = nodemailer.createTransport({
-  //     host: "smtp.gmail.com",
-  //     port: 587,
-  //     secure: false,
-  //     auth: {
-  //       user: "gnglab.dev@gmail.com", // generated ethereal user
-  //       pass: "admin1-2-3", // generated ethereal password
-  //     },
-  //   });
+    let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      auth: {
+        user: "gnglab.dev@gmail.com", // generated ethereal user
+        pass: "admin1-2-3", // generated ethereal password
+      },
+    });
 
-  //   let mailOptions = {
-  //     from: '"DevHub" <gnglab.dev@gmail.com>', // sender address
-  //     to: "glenn.ludszuweit@gmail.com", // list of receivers
-  //     subject: `DevHub Message from ${req.body.email}`, // Subject line
-  //     text: "", // plain text body
-  //     html: output, // html body
-  //   };
-  //   transporter
-  //     .sendMail(mailOptions)
-  //     .then(() => {
-  //       req.flash("success", `Message Sent!`);
-  //       res.locals.redirect = "/contact";
-  //       next();
-  //     })
-  //     .catch((error) => {
-  //       res.locals.redirect = "/contact";
-  //       req.flash("error", `Falied: ${error.message}`);
-  //       next();
-  //     });
-  // },
+    let mailOptions = {
+      from: '"DevHub" <gnglab.dev@gmail.com>', // sender address
+      to: "glenn.ludszuweit@gmail.com", // list of receivers
+      subject: `DevHub Message from ${req.body.email}`, // Subject line
+      text: "", // plain text body
+      html: output, // html body
+    };
+    transporter
+      .sendMail(mailOptions)
+      .then(() => {
+        req.flash("success", `Message Sent!`);
+        res.locals.redirect = "/contact";
+        next();
+      })
+      .catch((error) => {
+        res.locals.redirect = "/contact";
+        req.flash("error", `Falied: ${error.message}`);
+        next();
+      });
+  },
 
   redirectView: (req, res, next) => {
     let redirectPath = res.locals.redirect;
