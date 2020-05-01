@@ -42,7 +42,7 @@ module.exports = {
   create: (req, res, next) => {
     let courseParams = getCourseParams(req.body);
     if (req.file) {
-      courseParams.image = req.file.location;
+      courseParams.image = req.file.path;
     }
     Course.create(courseParams)
       .then((course) => {
