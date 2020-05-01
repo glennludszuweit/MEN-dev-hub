@@ -9,6 +9,7 @@ const connectFlash = require("connect-flash");
 const expressSession = require("express-session");
 const expressValidator = require("express-validator");
 const passport = require("passport");
+const sls = require("serverless-http");
 
 const router = require("./routes/index");
 const User = require("./models/user");
@@ -17,8 +18,7 @@ const app = express();
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
-  process.env.MONGO_URI ||
-    "mongodb+srv://devhub:admin123@node-devhub-mwfvv.mongodb.net/test?retryWrites=true&w=majority" ||
+  "mongodb+srv://devhub:admin123@node-devhub-mwfvv.mongodb.net/test?retryWrites=true&w=majority" ||
     "mongodb://localhost:27017/kitchenhub",
   {
     useNewUrlParser: true,
@@ -29,7 +29,7 @@ const db = mongoose.connection;
 db.once("open", () => {
   console.log("Successfully connected to MongoDB using Mongoose!");
 });
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 8080);
 
 //Project Environment
 app.set("view engine", "ejs");
@@ -90,13 +90,11 @@ app.use(expressValidator());
 //Routes
 app.use("/", router);
 
-app.post("/send", (req, res) => {
-  console.log(req.body);
-});
-
 //Chat
 const server = app.listen(app.get("port"), () => {
-    console.log(`Server running at http://localhost:${app.get("port")}`);
+    console.log(`Server running`);
   }),
   io = require("socket.io")(server);
 require("./controllers/chatController")(io);
+
+module.exports.server = sls(app);
