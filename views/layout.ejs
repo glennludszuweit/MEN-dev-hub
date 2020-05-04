@@ -60,14 +60,16 @@
             </li>
             <% } %> <% if (loggedIn) { %>
             <li class="nav-item">
-              <a class="nav-link" href="<%= `/users/${currentUser._id}` %>"
+              <a class="nav-link mr-2" href="<%= `/users/${currentUser._id}` %>"
                 >Profile</a
               >
             </li>
             <li class="nav-item">
-              <a class="btn btn-warning chat-icon text-white" href="/chat"
-                ><i class="fas fa-comment-dots"></i
-              ></a>
+              <a
+                class="btn btn-warning chat-icon text-white mb-2 mr-3"
+                href="/chat"
+                >Chat</a
+              >
             </li>
             <li class="nav-item">
               <a class="btn btn-secondary" href="/users/logout"
@@ -109,7 +111,13 @@
     <footer class="footer bg-primary">
       <div class="container">
         <p class="m-0 text-center text-white">
-          Copyright &copy; Your Website 2019
+          Copyright &copy;
+          <a class="text-white" href="https://glennludszuweit.de/"
+            >Glenn Ludszuweit</a
+          >
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
         </p>
       </div>
     </footer>

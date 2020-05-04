@@ -80,7 +80,7 @@ body {
 
 .messages-box,
 .chat-box {
-  height: 50rem;
+  height: 35rem;
   overflow-y: scroll;
 }
 

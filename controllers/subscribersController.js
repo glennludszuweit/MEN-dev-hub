@@ -57,19 +57,19 @@ module.exports = {
       <h3>Contact Details</h3>
       <ul>
         <li>Name: ${req.body.name}</li>
-        <li>Name: ${req.body.email}</li>
+        <li>Email: ${req.body.email}</li>
       </ul>
       <h3>Message</h3>
       <p>${req.body.contactMsg}</p>
     `;
 
     let transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
+      host: "smtp.mailtrap.io",
       port: 587,
       secure: false,
       auth: {
-        user: "gnglab.dev@gmail.com", // generated ethereal user
-        pass: "admin1-2-3", // generated ethereal password
+        user: "d262be34a8992c", // generated ethereal user
+        pass: "cc5cf3e73fc3cb", // generated ethereal password
       },
     });
 
