@@ -17,7 +17,7 @@
     <li>EJS</li>
 </ul>
 
-<p>The app is deployed using AWS EC2 instance.</p>
+<p>The app is deployed using AWS EC2 instance and Route53 to point to my domain.</p>
 
-<p>Click <a href="http://ec2-52-59-228-69.eu-central-1.compute.amazonaws.com:9000/">HERE</a></p>
-<p>Or copy this link and paste to your browser http://ec2-52-59-228-69.eu-central-1.compute.amazonaws.com:9000/</p>
+<p>Click <a href="http://devhub.gnglab.de/">HERE</a></p>
+<p>Or copy this link and paste to your browser http://devhub.gnglab.de/</p>
