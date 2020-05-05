@@ -7,6 +7,7 @@
     <li>Node.js</li>
     <li>Express</li>
     <li>MongoDB</li>
+    <li>Bootstrap</li>
     <li>Javascript</li>
     <li>jQuery</li>
     <li>Passport.js</li>
