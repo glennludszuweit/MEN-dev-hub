@@ -14,6 +14,7 @@
     <li>Socket.io</li>
     <li>Google maps</li>
     <li>Nodemailer</li>
+    <li>Multer</li>
     <li>EJS</li>
 </ul>
 
