@@ -15,7 +15,7 @@
     <li>Google maps</li>
     <li>Nodemailer</li>
     <li>Multer</li>
-    <li>PUG</li>
+    <li>EJS</li>
 </ul>
 
 <p>The app is deployed using AWS EC2 instance and ElasticIP to point to my domain.</p>
