@@ -13,7 +13,7 @@
     "node": "12.x"
   },
   "dependencies": {
-    "aws-sdk": "^2.665.0",
+    "aws-sdk": "^2.814.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
